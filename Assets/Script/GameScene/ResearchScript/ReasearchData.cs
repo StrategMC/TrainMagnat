@@ -4,56 +4,39 @@ using UnityEngine;
 
 public class ReasearchData : MonoBehaviour
 {
-    int point;
-    List<SteamEngine> engines;
-    List<MechShasi> mechs;
-    List<EkoSpace> space;
-    List<OptimizationEngine> optimizationEngines;
-    List<KonstructEngine> konstructEngines;
-    List<KonstructShasi> konstructShasis;
+    public int point;
+    public List<Technology> technologys;
+    public int SelectResearch;
+    private void Awake()
+    {
+        technologys = new List<Technology>();
+    }
+}
+public struct Technology
+{
+    public string name;
+    public int cost;
+    public int need;
+    public bool done;
+    public int PowerEngine;
+    public int KPDShasi;
+    public int VesShasi;
+    public int VesEngine;
+    public int SlognostEngine;
+    public int SlognostShasi;
 
+    public Technology(string name, int cost, int need, bool done, int PowerEngine, int KPDShasi, int VesShasi, int VesEngine, int SlognostEngine, int SlognostShasi)
+    {
+        this.name = name;
+        this.cost = cost;
+        this.need = need;
+        this.done = done;
+        this.PowerEngine = PowerEngine;
+        this.KPDShasi = KPDShasi;
+        this.VesShasi = VesShasi;
+        this.VesEngine = VesEngine;
+        this.SlognostEngine = SlognostEngine;
+        this.SlognostShasi = SlognostShasi;
+    }
 }
-struct SteamEngine
-{
-    string Name;
-    int cost;
-    int bonus;
-    int year;
-}
-struct MechShasi
-{
-    string Name;
-    int cost;
-    int bonus;
-    int year;
-}
-struct EkoSpace
-{
-    string Name;
-    int cost;
-    int bonus;
-    int year;
-}
-struct OptimizationEngine
-{
-    string Name;
-    int cost;
-    int bonus;
-    int year;
-}
-struct KonstructEngine
-{
-    string Name;
-    int cost;
-    int bonus;
-    int minus_bonus;
-    int year;
-}
-struct KonstructShasi
-{
-    string Name;
-    int cost;
-    int bonus;
-    int minus_bonus;
-    int year;
-}
+
