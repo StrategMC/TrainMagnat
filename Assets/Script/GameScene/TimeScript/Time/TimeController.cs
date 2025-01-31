@@ -15,6 +15,7 @@ namespace GlobalGame
         public Button FastButton;
 
         private List<IWeeklyUpdate> weeklyUpdateObjects;
+        private List<IYearsUpdate> yearsUpdateObjects;
 
         void Start()
         {
@@ -29,6 +30,7 @@ namespace GlobalGame
             FastButton.onClick.AddListener(Fast);
 
             weeklyUpdateObjects = new List<IWeeklyUpdate>(FindObjectsOfType<MonoBehaviour>().OfType<IWeeklyUpdate>());
+            yearsUpdateObjects = new List<IYearsUpdate>(FindObjectsOfType<MonoBehaviour>().OfType<IYearsUpdate>());
         }
 
         void Pause()
@@ -57,10 +59,11 @@ namespace GlobalGame
                     Time.dayProgress = 0;
                     Time.week++;
 
+                    
+                    weeklyUpdateObjects = new List<IWeeklyUpdate>(FindObjectsOfType<MonoBehaviour>().OfType<IWeeklyUpdate>());
                     foreach (var weeklyUpdateObject in weeklyUpdateObjects)
                     {
                         weeklyUpdateObject.WeekTick();
-                        weeklyUpdateObjects = new List<IWeeklyUpdate>(FindObjectsOfType<MonoBehaviour>().OfType<IWeeklyUpdate>());
                     }
 
                     if (Time.week > 4)
@@ -72,6 +75,13 @@ namespace GlobalGame
                         {
                             Time.month = 1;
                             Time.year++;
+
+                           
+                            yearsUpdateObjects = new List<IYearsUpdate>(FindObjectsOfType<MonoBehaviour>().OfType<IYearsUpdate>());
+                            foreach (var yearsUpdateObject in yearsUpdateObjects)
+                            {
+                                yearsUpdateObject.YearsTick();
+                            }
                         }
                     }
                 }
