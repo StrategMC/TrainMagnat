@@ -28,6 +28,7 @@ public class ResearchController : MonoBehaviour, IYearsUpdate, IWeeklyUpdate
         reasearchData.technologys.Add(texEngK);
         reasearchData.technologys.Add(texShaK);
         researchView.View();
+        researchView.ViewBonus();
     }
     public void PointUpdate(string tex)
     {
