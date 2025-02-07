@@ -8,6 +8,8 @@ public class EngineDevelopView : MonoBehaviour
 {
     public EngineDevelopData data;
     public EngineDevelopController controller;
+    public EngineDevelopReaserchesEngines engineDevelopReaserchesEngines;
+    public InputField inputField;
     public Text sizeText;
     public Text powerText;
     public Text vesText;
@@ -21,11 +23,33 @@ public class EngineDevelopView : MonoBehaviour
     public Text materialText;
     public Slider technologySlider;
     public Text technologyText;
+
+    public GameObject Window;
+    public Button CancelButton;
+    public Button AgreeButton;
     private void Start()
     {
         volumeSlider.onValueChanged.AddListener(ChangeVolume);
         materialSlider.onValueChanged.AddListener(ChangeMaterial);
         technologySlider.onValueChanged.AddListener(ChangeTechnology);
+        CancelButton.onClick.AddListener(Cancel);
+        AgreeButton.onClick.AddListener(Agree);
+    }
+    private void Agree()
+    {
+        if(inputField.text.Length>3)
+        {
+            engineDevelopReaserchesEngines.Vyzov(inputField.text, data.size, data.power, data.ves, data.difficulties, data.timeResearch);
+            Window.SetActive(false);
+        }
+        else
+        {
+            Debug.Log("Название должно быть длинее 3 символов");
+        }
+    }
+    private void Cancel()
+    {
+        Window.SetActive(false);
     }
     private void ChangeVolume(float value)
     {
@@ -72,7 +96,7 @@ public class EngineDevelopView : MonoBehaviour
         vesText.text = $"Вес: {data.ves}кг";
         difficultiesText.text = $"Сложность: {data.difficulties}у.е.";
 
-        timeText.text = $"Время разработки(при бонусе 0): {data.timeResearch} недель";
+        timeText.text = $"Требуется очков разработки: {data.timeResearch}";
         manyText.text = $"Стоимость разработки: {data.manyResearch}$";
     }
 }

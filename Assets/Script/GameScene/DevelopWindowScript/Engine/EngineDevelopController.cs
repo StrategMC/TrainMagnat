@@ -7,7 +7,7 @@ public class EngineDevelopController : MonoBehaviour
     public EngineDevelopData data;
     public EngineDevelopView view;
     public ReasearchBonus bonus;
-    private void Start()
+    public void Start()
     {
         PodschetSvoistva();
         view.ViewSvoistva();

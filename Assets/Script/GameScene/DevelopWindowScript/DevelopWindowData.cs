@@ -6,7 +6,7 @@ public class DevelopWindowData : MonoBehaviour
 {
     public int lvlFinans;
     public int Rashod;
-    public int bonus;
+    public float bonus;
     public void Awake()
     {
         lvlFinans = 1;

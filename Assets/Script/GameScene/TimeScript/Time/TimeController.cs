@@ -33,7 +33,7 @@ namespace GlobalGame
             yearsUpdateObjects = new List<IYearsUpdate>(FindObjectsOfType<MonoBehaviour>().OfType<IYearsUpdate>());
         }
 
-        void Pause()
+       public void Pause()
         {
             Time.timeScale = 0.0f;
         }

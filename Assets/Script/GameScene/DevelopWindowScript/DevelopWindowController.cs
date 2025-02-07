@@ -4,39 +4,43 @@ using UnityEngine;
 
 public class DevelopWindowController : MonoBehaviour
 {
-    public DevelopWindowData data; 
-
+    public DevelopWindowData data;
+    public void Start()
+    {
+        data.Rashod = 1000;
+        data.bonus = 1f;
+    }
     public void Obnova()
     {
         switch (data.lvlFinans)
         {
             case 1:
                 data.Rashod = 1000;
-                data.bonus = -15;
+                data.bonus = 1f;
                 break;
             case 2:
                 data.Rashod = 5000;
-                data.bonus = -5;
+                data.bonus = 1.2f;
                 break;
             case 3:
                 data.Rashod = 10000;
-                data.bonus = 5;
+                data.bonus = 1.5f;
                 break;
             case 4:
                 data.Rashod = 20000;
-                data.bonus = 15;
+                data.bonus = 2f;
                 break;
             case 5:
                 data.Rashod = 50000;
-                data.bonus = 30;
+                data.bonus = 3f;
                 break;
             case 6:
                 data.Rashod = 100000;
-                data.bonus = 50;
+                data.bonus = 5f;
                 break;
             case 7:
                 data.Rashod = 150000;
-                data.bonus = 100;
+                data.bonus = 10f;
                 break;
         }
     }

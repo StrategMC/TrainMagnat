@@ -10,7 +10,7 @@ public class EngineDevelopData : MonoBehaviour
     public int ves;
     public int difficulties;
 
-    public int timeResearch;
+    public float timeResearch;
     public int manyResearch;
 
     public int volume;
