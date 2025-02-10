@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class EngineView : MonoBehaviour
+
+public class SelectEngineView : MonoBehaviour
 {
+
+    public SelectEngineData engineData;
+    public SelectEngine selectEngine;
     public EngineData data;
-    public GameObject Window;
-    public Button CancelButton;
     public Text nameText;
     public Text sizeText;
     public Text powerText;
@@ -14,16 +16,26 @@ public class EngineView : MonoBehaviour
     public Text difficultText;
     public Transform EngContent;
     public GameObject PrefabEngine;
+    public Button SelectButton;
+    private int indexSelect;
+
     private void Start()
     {
-        CancelButton.onClick.AddListener(Cancel);
-       
+        SelectButton.onClick.AddListener(SelectEngine);
     }
-    public void Cancel()
+    public void SelectEngine()
     {
-        Window.SetActive(false);
+        if (nameText.text.Length >= 3)
+        {
+            string name = data.engines[indexSelect].name;
+            int size = data.engines[indexSelect].size;
+            int power = data.engines[indexSelect].power;
+            int ves = data.engines[indexSelect].ves;
+            int different = data.engines[indexSelect].difficulties;
+            engineData.Inicialize(name, size, power, ves, different);
+            selectEngine.SelectClick();
+        }
     }
-   
     public void View()
     {
         foreach (Transform child in EngContent)
@@ -32,36 +44,37 @@ public class EngineView : MonoBehaviour
         }
 
         AddLayoutComponents(EngContent);
-        
-            for (int i = 0; i < data.engines.Count; i++)
-            {
-                GameObject button = Instantiate(PrefabEngine, EngContent);
-                button.GetComponentInChildren<Text>().text = data.engines[i].name;
-                button.GetComponent<Button>().onClick.AddListener(() => OnEngineButtonClicked(data.engines[i-1]));
 
-                if (i == 0)
+        for (int i = 0; i < data.engines.Count; i++)
+        {
+            GameObject button = Instantiate(PrefabEngine, EngContent);
+            button.GetComponentInChildren<Text>().text = data.engines[i].name;
+            button.GetComponent<Button>().onClick.AddListener(() => OnEngineButtonClicked(data.engines[i - 1]));
+
+            if (i == 0)
+            {
+                Transform buttonTransform = button.transform.GetChild(0);
+                if (buttonTransform != null && buttonTransform.name == "Button")
                 {
-                    Transform buttonTransform = button.transform.GetChild(0);
-                    if (buttonTransform != null && buttonTransform.name == "Button")
-                    {
-                        Destroy(buttonTransform.gameObject);
-                    }
+                    Destroy(buttonTransform.gameObject);
                 }
             }
-        
+        }
+
     }
     void OnEngineButtonClicked(Engine engine)
     {
         nameText.text = engine.name;
         sizeText.text = SizeEngineAdapter(engine.size);
-        vesText.text=$"{engine.ves}Í„";
+        vesText.text = $"{engine.ves}Í„";
         powerText.text = $"{engine.power}Î.Ò.";
-        difficultText.text=$"{engine.difficulties}";
-        
+        difficultText.text = $"{engine.difficulties}";
+        indexSelect = data.engines.IndexOf(engine);
     }
     string SizeEngineAdapter(int size)
     {
-        switch (size) {
+        switch (size)
+        {
             case 1:
                 return "A";
             case 2:

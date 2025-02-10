@@ -2,66 +2,64 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class EngineView : MonoBehaviour
+public class ChassisView : MonoBehaviour
 {
-    public EngineData data;
+    public ChassisData data;
     public GameObject Window;
     public Button CancelButton;
     public Text nameText;
     public Text sizeText;
-    public Text powerText;
+    public Text kpdText;
     public Text vesText;
     public Text difficultText;
-    public Transform EngContent;
-    public GameObject PrefabEngine;
+    public Transform ChaContent;
+    public GameObject PrefabChassi;
     private void Start()
     {
         CancelButton.onClick.AddListener(Cancel);
-       
     }
     public void Cancel()
     {
         Window.SetActive(false);
     }
-   
     public void View()
     {
-        foreach (Transform child in EngContent)
+        foreach (Transform child in ChaContent)
         {
             Destroy(child.gameObject);
         }
 
-        AddLayoutComponents(EngContent);
-        
-            for (int i = 0; i < data.engines.Count; i++)
-            {
-                GameObject button = Instantiate(PrefabEngine, EngContent);
-                button.GetComponentInChildren<Text>().text = data.engines[i].name;
-                button.GetComponent<Button>().onClick.AddListener(() => OnEngineButtonClicked(data.engines[i-1]));
+        AddLayoutComponents(ChaContent);
 
-                if (i == 0)
+        for (int i = 0; i < data.chassis.Count; i++)
+        {
+            GameObject button = Instantiate(PrefabChassi, ChaContent);
+            button.GetComponentInChildren<Text>().text = data.chassis[i].name;
+            button.GetComponent<Button>().onClick.AddListener(() => OnChassiButtonClicked(data.chassis[i - 1]));
+
+            if (i == 0)
+            {
+                Transform buttonTransform = button.transform.GetChild(0);
+                if (buttonTransform != null && buttonTransform.name == "Button")
                 {
-                    Transform buttonTransform = button.transform.GetChild(0);
-                    if (buttonTransform != null && buttonTransform.name == "Button")
-                    {
-                        Destroy(buttonTransform.gameObject);
-                    }
+                    Destroy(buttonTransform.gameObject);
                 }
             }
-        
+        }
+
     }
-    void OnEngineButtonClicked(Engine engine)
+    void OnChassiButtonClicked(Chassi chassi)
     {
-        nameText.text = engine.name;
-        sizeText.text = SizeEngineAdapter(engine.size);
-        vesText.text=$"{engine.ves}Í„";
-        powerText.text = $"{engine.power}Î.Ò.";
-        difficultText.text=$"{engine.difficulties}";
-        
+        nameText.text = chassi.name;
+        sizeText.text = SizeEngineAdapter(chassi.size);
+        vesText.text = $"{chassi.ves}Í„";
+        kpdText.text = $"{chassi.bonusKpd}%";
+        difficultText.text = $"{chassi.difficult}";
     }
     string SizeEngineAdapter(int size)
     {
-        switch (size) {
+        switch (size)
+        {
             case 1:
                 return "A";
             case 2:

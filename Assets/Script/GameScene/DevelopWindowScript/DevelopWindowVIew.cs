@@ -21,11 +21,24 @@ public class DevelopWindowVIew : MonoBehaviour
     public Button ViewEngineButton;
     public GameObject ViewEngineWindow;
     public EngineView ViewEngine;
+
+    public Button DevelopShButton;
+    public GameObject DevelopChassi;
+    public ÑhassisWindowController ÑhassisWindowController;
+
+    public Button ViewChassiButton;
+    public GameObject ViewChassiWindow;
+    public ChassisView ViewChassi;
+
+
     void Start()
     {
         Scrollbar.onValueChanged.AddListener(UpdateData);
         DevelopEngButton.onClick.AddListener(DEB);
         ViewEngineButton.onClick.AddListener(VEB);
+        DevelopShButton.onClick.AddListener(DCB);
+        ViewChassiButton.onClick.AddListener(VCB);
+         
     }
     private void UpdateData(float value)
     {
@@ -36,6 +49,19 @@ public class DevelopWindowVIew : MonoBehaviour
     void UpdateText()
     {
         LBpointText.text = Convert.ToString(data.lvlFinans);
+    }
+    private void DCB()
+    {
+        DevelopChassi.SetActive(true);
+        TimeController.Pause();
+        ÑhassisWindowController.Start();
+    }
+    private void VCB()
+    {
+        ViewChassiWindow.gameObject.SetActive(true);
+        TimeController.Pause();
+        ViewChassi.View();
+
     }
     private void DEB()
     {

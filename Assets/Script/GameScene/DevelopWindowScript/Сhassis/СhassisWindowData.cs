@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class СhassisWindowData : MonoBehaviour
 {
-    public string name;
     public int placeEngine;
     public int bonusKPD;
     public int ves;
     public int difficult;
+
+    public int point;
+    public int money;
 
     public int place;
     public int placeE;
