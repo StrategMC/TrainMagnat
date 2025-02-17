@@ -6,7 +6,9 @@ public class LineData : MonoBehaviour
 {
     public string Name;
     public int kilometrag;
+    public int needLoc;
     public List<CompanyLocomotiveData> Locomotives;
+    public DemandController demandController;
     public LineController lineController; 
     
     void Awake()
@@ -15,21 +17,12 @@ public class LineData : MonoBehaviour
         lineController = gameObject.AddComponent<LineController>(); 
         lineController.Line = this; 
     }
-    void Start()
-    {
-        for (int i = 0; i < 20; i++)
-        {
-            GameObject locomotiveObject = new GameObject($"Locomotive");
-            locomotiveObject.transform.parent = this.transform;
-            CompanyLocomotiveData locoData = locomotiveObject.AddComponent<CompanyLocomotiveData>();
-            locoData.Initialize($"Паровозик", 10);
-            Locomotives.Add(locoData);
-        }
-    }
-    public void Initialize(string name, int kilometrage)
+    
+    public void Initialize(string name, int kilometrage, DemandController demandController)
     {
         this.Name = name;
         this.kilometrag = kilometrage;
+        this.demandController = demandController;
     }
 }
 

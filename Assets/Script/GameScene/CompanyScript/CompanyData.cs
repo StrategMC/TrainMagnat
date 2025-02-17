@@ -7,6 +7,8 @@ public class CompanyData : MonoBehaviour
     public string Name;
     public List<LineData> Lines = new List<LineData>();
 
+    public DemandController DemandController;
+
     public CompanyData()
     {
         Name = "Название Компании";
@@ -20,7 +22,7 @@ public class CompanyData : MonoBehaviour
             GameObject lineObject = new GameObject($"Line{i + 1}");
             lineObject.transform.parent = this.transform; 
             LineData lineData = lineObject.AddComponent<LineData>(); 
-            lineData.Initialize($"{Name} Линия {Lines.Count + 1}", 100);
+            lineData.Initialize($"{Name} Линия {Lines.Count + 1}", 100, DemandController);
             Lines.Add(lineData);
         }
     }

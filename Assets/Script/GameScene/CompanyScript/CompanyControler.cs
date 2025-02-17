@@ -7,6 +7,7 @@ using System.Linq;
 public class CompanyController : MonoBehaviour, IWeeklyUpdate
 {
     public CompanyData Company;
+    public DemandController DemandController;
 
     void Start()
     {
@@ -34,7 +35,7 @@ public class CompanyController : MonoBehaviour, IWeeklyUpdate
             GameObject lineObject = new GameObject($"Line{Company.Lines.Count + 1}");
             lineObject.transform.parent = this.transform;
             LineData newLine = lineObject.AddComponent<LineData>();
-            newLine.Initialize($"{Company.Name} Линия {Company.Lines.Count + 1}", AvverageKilometrag());
+            newLine.Initialize($"{Company.Name} Линия {Company.Lines.Count + 1}", AvverageKilometrag(), DemandController);
             Company.Lines.Add(newLine);
         }
     }
