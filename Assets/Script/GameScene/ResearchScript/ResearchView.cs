@@ -41,9 +41,9 @@ public class ResearchView : MonoBehaviour
             GameObject button = Instantiate(PrefabResearch, NoResContent);
             button.GetComponentInChildren<Text>().text = data.technologys[i].name;
 
-            // Добавление обработчика событий для кнопки
+            
             Button btn = button.GetComponentInChildren<Button>();
-            int index = i; // Локальная копия переменной для замыкания
+            int index = i; 
             btn.onClick.AddListener(() => researchController.MoveUp(index));
 
             if (i == 0)

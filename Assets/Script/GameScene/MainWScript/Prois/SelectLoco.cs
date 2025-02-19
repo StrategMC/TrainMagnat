@@ -57,7 +57,8 @@ public class SelectLoco : MonoBehaviour
         {
             GameObject button = Instantiate(PrefabLocomotiev, LocContent);
             button.GetComponentInChildren<Text>().text = data.locomotiews[i].name;
-            button.GetComponent<Button>().onClick.AddListener(() => OnLocomotiewButtonClicked(data.locomotiews[i - 1]));
+            int index = i;
+            button.GetComponent<Button>().onClick.AddListener(() => OnLocomotiewButtonClicked(data.locomotiews[index]));
 
             if (i == 0)
             {

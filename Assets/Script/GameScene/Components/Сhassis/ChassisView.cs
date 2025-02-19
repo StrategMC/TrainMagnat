@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -35,7 +36,8 @@ public class ChassisView : MonoBehaviour
         {
             GameObject button = Instantiate(PrefabChassi, ChaContent);
             button.GetComponentInChildren<Text>().text = data.chassis[i].name;
-            button.GetComponent<Button>().onClick.AddListener(() => OnChassiButtonClicked(data.chassis[i - 1]));
+            int index = i;
+            button.GetComponent<Button>().onClick.AddListener(() => OnChassiButtonClicked(data.chassis[index]));
 
             if (i == 0)
             {

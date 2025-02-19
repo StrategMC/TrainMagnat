@@ -48,7 +48,8 @@ public class SelectChassisView : MonoBehaviour
         {
             GameObject button = Instantiate(PrefabChassis, ChsContent);
             button.GetComponentInChildren<Text>().text = data.chassis[i].name;
-            button.GetComponent<Button>().onClick.AddListener(() => OnChassisButtonClicked(data.chassis[i - 1]));
+            int index = i;  
+            button.GetComponent<Button>().onClick.AddListener(() => OnChassisButtonClicked(data.chassis[index]));
 
             if (i == 0)
             {

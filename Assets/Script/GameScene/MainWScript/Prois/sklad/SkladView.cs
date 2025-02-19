@@ -47,7 +47,8 @@ public class SkladView : MonoBehaviour
             Text[] texts = button.GetComponentsInChildren<Text>();
             texts[0].text= locomotive.Key.name;
             texts[1].text = locomotive.Value+" ед.";
-            button.GetComponent<Button>().onClick.AddListener(() => OnLocomotiewButtonClicked(locomotive.Key));
+            var loco = locomotive.Key;
+            button.GetComponent<Button>().onClick.AddListener(() => OnLocomotiewButtonClicked(loco));
 
            
         }

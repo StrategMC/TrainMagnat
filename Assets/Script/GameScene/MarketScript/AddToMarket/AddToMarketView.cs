@@ -33,6 +33,7 @@ public class AddToMarketView : MonoBehaviour
     {
         if (int.Parse(InputCol.text)<=selectLocoCount && int.Parse(InputCost.text)>0)
         {
+            Debug.Log("0");
             addToMarketController.AddToMarket(selectLoco, int.Parse(InputCost.text), int.Parse(InputCol.text));
             Close();
             
@@ -68,7 +69,8 @@ public class AddToMarketView : MonoBehaviour
             Text[] texts = button.GetComponentsInChildren<Text>();
             texts[0].text = locomotive.Key.name;
             texts[1].text = locomotive.Value + " ед.";
-            button.GetComponent<Button>().onClick.AddListener(() => OnLocomotiewButtonClicked(locomotive.Key,locomotive.Value));
+            var loco = locomotive;
+            button.GetComponent<Button>().onClick.AddListener(() => OnLocomotiewButtonClicked(loco.Key, loco.Value));
 
 
         }

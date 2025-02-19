@@ -24,6 +24,7 @@ public class AddToMarketController : MonoBehaviour
                 }
             }
         }
+        Debug.Log("1");
         skladController.MinusPoezda(loco, count);
         marketView.PredlogenieView();
     }

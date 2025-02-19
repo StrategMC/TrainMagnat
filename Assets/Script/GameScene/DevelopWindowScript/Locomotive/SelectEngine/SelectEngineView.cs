@@ -49,7 +49,8 @@ public class SelectEngineView : MonoBehaviour
         {
             GameObject button = Instantiate(PrefabEngine, EngContent);
             button.GetComponentInChildren<Text>().text = data.engines[i].name;
-            button.GetComponent<Button>().onClick.AddListener(() => OnEngineButtonClicked(data.engines[i - 1]));
+            int index = i;
+            button.GetComponent<Button>().onClick.AddListener(() => OnEngineButtonClicked(data.engines[index]));
 
             if (i == 0)
             {
