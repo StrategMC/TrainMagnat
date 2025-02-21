@@ -1,3 +1,4 @@
+using GlabalGame;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -6,6 +7,7 @@ using UnityEngine.UI;
 
 public class EngineDevelopView : MonoBehaviour
 {
+    public MoneyController moneyController;
     public EngineDevelopData data;
     public EngineDevelopController controller;
     public EngineDevelopReaserchesEngines engineDevelopReaserchesEngines;
@@ -41,6 +43,7 @@ public class EngineDevelopView : MonoBehaviour
         {
             engineDevelopReaserchesEngines.Vyzov(inputField.text, data.size, data.power, data.ves, data.difficulties, data.timeResearch);
             Window.SetActive(false);
+            moneyController.RemoveMany(data.manyResearch);
         }
         else
         {

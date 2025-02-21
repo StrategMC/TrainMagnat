@@ -33,7 +33,7 @@ public class AddToMarketView : MonoBehaviour
     {
         if (int.Parse(InputCol.text)<=selectLocoCount && int.Parse(InputCost.text)>0)
         {
-            Debug.Log("0");
+            //Debug.Log("0");
             addToMarketController.AddToMarket(selectLoco, int.Parse(InputCost.text), int.Parse(InputCol.text));
             Close();
             

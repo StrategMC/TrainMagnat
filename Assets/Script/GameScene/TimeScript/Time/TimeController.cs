@@ -9,6 +9,8 @@ namespace GlobalGame
 {
     public class TimeController : MonoBehaviour
     {
+        public GameOverController gameOverController;
+        public MoneyData MoneyData;
         public TimeData Time;
         public Button PauseButton;
         public Button PlayButton;
@@ -63,6 +65,11 @@ namespace GlobalGame
                     weeklyUpdateObjects = new List<IWeeklyUpdate>(FindObjectsOfType<MonoBehaviour>().OfType<IWeeklyUpdate>());
                     foreach (var weeklyUpdateObject in weeklyUpdateObjects)
                     {
+                        if(MoneyData.money<=0)
+                        {
+                            gameOverController.Over();
+                            Pause();
+                        }
                         weeklyUpdateObject.WeekTick();
                     }
 

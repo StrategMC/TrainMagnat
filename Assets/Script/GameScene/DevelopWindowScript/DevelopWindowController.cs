@@ -1,14 +1,20 @@
+using GlabalGame;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DevelopWindowController : MonoBehaviour
+public class DevelopWindowController : MonoBehaviour,IWeeklyUpdate
 {
     public DevelopWindowData data;
+    public MoneyController moneyController;
     public void Start()
     {
         data.Rashod = 1000;
         data.bonus = 1f;
+    }
+    public void WeekTick()
+    {
+        moneyController.RemoveMany(data.Rashod);
     }
     public void Obnova()
     {

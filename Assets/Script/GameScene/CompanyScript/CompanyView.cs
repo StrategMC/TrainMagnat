@@ -156,7 +156,6 @@ public class CompanyView : MonoBehaviour, IWeeklyUpdate
         {
             GameObject item = Instantiate(locomotivePrefab, locomotiveContent);
             Text[] texts = item.GetComponentsInChildren<Text>();
-
             texts[0].text = locomotive.Name;
             texts[1].text = "Осталось: " + locomotive.ostalos + " недель";
         }

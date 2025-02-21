@@ -8,7 +8,7 @@ public class SkladController : MonoBehaviour
         
             if (skladData.lovomotivy.ContainsKey(loco))
             {
-                Debug.Log("2");
+                //Debug.Log("2");
                 skladData.lovomotivy[loco] -= count;
                 if (skladData.lovomotivy[loco] == 0)
                 {

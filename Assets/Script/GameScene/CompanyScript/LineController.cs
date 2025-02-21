@@ -15,6 +15,10 @@ public class LineController : MonoBehaviour, IWeeklyUpdate
         for (int i = 0; i < Line.Locomotives.Count; i++)
         {
             Line.Locomotives[i].ostalos--;
+            if(Line.Locomotives[i].ostalos==0)
+            {
+                Line.Locomotives.RemoveAt(i);   
+            }
         }
     }
 

@@ -1,9 +1,11 @@
+using GlabalGame;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ProisController : MonoBehaviour,IWeeklyUpdate
 {
+    public MoneyController moneyController;
    public ProisData ProisData;
    public ProisView ProisView;
    public SkladData SkladData;
@@ -37,10 +39,11 @@ public class ProisController : MonoBehaviour,IWeeklyUpdate
             {
                 SkladData.lovomotivy.Add(ProisData.locomotiew, ProisData.proisinweek);
             }
+            moneyController.RemoveMany(ProisData.proispoint);
         }
         else
         {
-            Debug.Log("Ничего нет в производстве");
+           // Debug.Log("Ничего нет в производстве");
         }
         
     }

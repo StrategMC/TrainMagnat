@@ -1,3 +1,4 @@
+using GlabalGame;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.Dependencies.NCalc;
@@ -6,6 +7,7 @@ using UnityEngine.UI;
 
 public class СhassisWindowView : MonoBehaviour
 {
+    public MoneyController MoneyController;
     public Slider placeSlider;
     public Slider placeEngineSlider;
     public Slider HodovaaSlider;
@@ -52,6 +54,7 @@ public class СhassisWindowView : MonoBehaviour
         {
             ChassisWindowReaserch.Vyzov(inputField.text, data.placeEngine, data.bonusKPD, data.ves, data.difficult, data.point);
             Window.SetActive(false);
+            MoneyController.RemoveMany(data.money);
         }
         else
         {

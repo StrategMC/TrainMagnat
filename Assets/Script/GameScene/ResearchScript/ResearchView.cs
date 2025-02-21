@@ -34,7 +34,7 @@ public class ResearchView : MonoBehaviour
 
         AddLayoutComponents(NoResContent);
 
-        Debug.Log($"Технологий {data.technologys.Count}");
+        //Debug.Log($"Технологий {data.technologys.Count}");
 
         for (int i = 0; i < data.technologys.Count; i++)
         {

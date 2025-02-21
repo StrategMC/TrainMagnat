@@ -12,12 +12,12 @@ namespace GlabalGame
         {
             View.Vyvod();
         }
-        void AddMany(int bablo)
+        public void AddMany(int bablo)
         {
             Money.money += bablo;
             View.Vyvod();
         }
-        void RemoveMany(int bablo)
+        public void RemoveMany(int bablo)
         {
             Money.money -= bablo;
             View.Vyvod();
