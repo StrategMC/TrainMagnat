@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class EngineDevelopView : MonoBehaviour
 {
+    public FinanseView finanseView;
     public MoneyController moneyController;
     public EngineDevelopData data;
     public EngineDevelopController controller;
@@ -44,6 +45,9 @@ public class EngineDevelopView : MonoBehaviour
             engineDevelopReaserchesEngines.Vyzov(inputField.text, data.size, data.power, data.ves, data.difficulties, data.timeResearch);
             Window.SetActive(false);
             moneyController.RemoveMany(data.manyResearch);
+            finanseView.consumptionfordevelop += data.manyResearch;
+            //finanseView.View();
+
         }
         else
         {

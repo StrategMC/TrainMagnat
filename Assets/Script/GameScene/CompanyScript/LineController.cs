@@ -5,19 +5,27 @@ using UnityEngine;
 public class LineController : MonoBehaviour, IWeeklyUpdate
 {
     public LineData Line;
+
     public void WeekTick()
     {
         Line.needLoc = NugnoParovozov();
+
         if (Line.Locomotives.Count < Line.needLoc)
         {
-            Line.demandController.AddDemand(Line, Line.needLoc- Line.Locomotives.Count);
+            Line.demandController.AddDemand(Line, Line.needLoc - Line.Locomotives.Count);
         }
-        for (int i = 0; i < Line.Locomotives.Count; i++)
+        
+        for (int i = Line.Locomotives.Count - 1; i >= 0; i--)
         {
             Line.Locomotives[i].ostalos--;
-            if(Line.Locomotives[i].ostalos==0)
+
+            if (Line.Locomotives[i].ostalos == 0)
             {
-                Line.Locomotives.RemoveAt(i);   
+                CompanyLocomotiveData locoToDestroy = Line.Locomotives[i];
+
+                Line.Locomotives.RemoveAt(i);
+
+                Destroy(locoToDestroy.gameObject);
             }
         }
     }

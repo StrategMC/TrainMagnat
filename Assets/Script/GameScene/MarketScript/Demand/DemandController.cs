@@ -8,7 +8,12 @@ public class DemandController : MonoBehaviour, IWeeklyUpdate
     public MoneyController MoneyController;
     public MarketData MarketData;
     public MarketView MarketView;
+    public FinanseView finanseView;
+    public ItogView itogView;
 
+    int allsell;
+    int playersell;
+    int profit;
     public void AddDemand(LineData line, int col)
     {
         Demand temp = new Demand(line, col);
@@ -17,17 +22,25 @@ public class DemandController : MonoBehaviour, IWeeklyUpdate
 
     public void WeekTick()
     {
+        finanseView.profitforlocomotievesell += profit;
+        //finanseView.View();
+        itogView.Init(allsell, playersell, profit);
+        itogView.View();
+        MarketView.PredlogenieView();
+        MarketView.DemandView();
         List<Demand> demandsToRemove = new List<Demand>();
-
+        allsell=0;
+        playersell=0;
+        profit=0;
         for (int i = 0; i < MarketData.demands.Count; i++)
         {
             LineData line = MarketData.demands[i].line;
 
             while (line.Locomotives.Count < line.needLoc && MarketData.supplys.Count > 0)
             {
+                allsell++;
                 if (!BuyLoco(line))
                 {
-                 
                     break;
                 }
             }
@@ -37,14 +50,12 @@ public class DemandController : MonoBehaviour, IWeeklyUpdate
                 demandsToRemove.Add(MarketData.demands[i]);
             }
         }
-
         foreach (var demand in demandsToRemove)
         {
             MarketData.demands.Remove(demand);
         }
 
-        MarketView.PredlogenieView();
-        MarketView.DemandView();
+       
     }
 
     private bool BuyLoco(LineData line)
@@ -67,6 +78,8 @@ public class DemandController : MonoBehaviour, IWeeklyUpdate
         bestSupply.col -= 1;
         if (bestSupply.CompanyName == "Player")
         {
+            playersell++;
+            profit += bestSupply.cost;
             MoneyController.AddMany(bestSupply.cost);
         }
         if (bestSupply.col <= 0)

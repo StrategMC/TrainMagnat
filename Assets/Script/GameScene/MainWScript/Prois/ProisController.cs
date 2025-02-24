@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class ProisController : MonoBehaviour,IWeeklyUpdate
 {
-    public MoneyController moneyController;
+   public FinanseView FinanseView;
+   public MoneyController moneyController;
    public ProisData ProisData;
    public ProisView ProisView;
    public SkladData SkladData;
@@ -40,6 +41,7 @@ public class ProisController : MonoBehaviour,IWeeklyUpdate
                 SkladData.lovomotivy.Add(ProisData.locomotiew, ProisData.proisinweek);
             }
             moneyController.RemoveMany(ProisData.proispoint);
+            FinanseView.consumptionforproduction+=ProisData.proispoint;
         }
         else
         {

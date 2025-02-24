@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class ResearchController : MonoBehaviour, IYearsUpdate, IWeeklyUpdate
 {
-
+    public FinanseView finanseView;
     public MoneyController moneyController;
     public ReasearchData reasearchData;
     public ResearchView researchView;
@@ -71,6 +71,8 @@ public class ResearchController : MonoBehaviour, IYearsUpdate, IWeeklyUpdate
         if (reasearchData.technologys.Count > 0)
         {
             moneyController.RemoveMany(reasearchData.point * 5000);
+            finanseView.consumptionforresearch += reasearchData.point * 5000;
+            //finanseView.View();
             var selectedResearch = reasearchData.technologys[0];
 
             selectedResearch.need += reasearchData.point;

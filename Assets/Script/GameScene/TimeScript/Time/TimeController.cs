@@ -7,8 +7,10 @@ using UnityEngine.UI;
 
 namespace GlobalGame
 {
+    
     public class TimeController : MonoBehaviour
     {
+        public FinanseView finanseView;
         public GameOverController gameOverController;
         public MoneyData MoneyData;
         public TimeData Time;
@@ -72,7 +74,7 @@ namespace GlobalGame
                         }
                         weeklyUpdateObject.WeekTick();
                     }
-
+                    finanseView.View();
                     if (Time.week > 4)
                     {
                         Time.week = 1;

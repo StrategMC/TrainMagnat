@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class СhassisWindowView : MonoBehaviour
 {
+    public FinanseView FinanseView;
     public MoneyController MoneyController;
     public Slider placeSlider;
     public Slider placeEngineSlider;
@@ -55,6 +56,8 @@ public class СhassisWindowView : MonoBehaviour
             ChassisWindowReaserch.Vyzov(inputField.text, data.placeEngine, data.bonusKPD, data.ves, data.difficult, data.point);
             Window.SetActive(false);
             MoneyController.RemoveMany(data.money);
+            FinanseView.consumptionfordevelop += data.money;
+            //FinanseView.View();
         }
         else
         {
