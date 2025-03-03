@@ -1,4 +1,5 @@
 using GlabalGame;
+using GlobalGame;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -9,13 +10,18 @@ public class ResearchController : MonoBehaviour, IYearsUpdate, IWeeklyUpdate
     public FinanseView finanseView;
     public MoneyController moneyController;
     public ReasearchData reasearchData;
+    public ReasearchBonus researchBonus;
     public ResearchView researchView;
     public ResearchProgresBar Bar;
-    public TimeData timeData;
-    public ReasearchBonus reasearchBonus;
+    TimeData timeData;
+    public TimeController timeController;
 
     void Start()
     {
+        researchBonus = new ReasearchBonus();
+        reasearchData =new ReasearchData();
+        
+        timeData = timeController.Time;
         Technology texSteam = new Technology($"Паровая установка {timeData.year}", 30, 0, 5, 0, 0, 0, 0, 0);
         Technology texShasi = new Technology($"Механизмы шасси {timeData.year}", 30, 0, 0, 5, 0, 0, 0, 0);
         Technology texEko = new Technology($"Снижение массы шасси {timeData.year}", 32, 0, 0, 0, 5, 0, 0, 0);
@@ -79,12 +85,12 @@ public class ResearchController : MonoBehaviour, IYearsUpdate, IWeeklyUpdate
 
             if (selectedResearch.need >= selectedResearch.cost)
             {
-                reasearchBonus.PowerEngine += selectedResearch.PowerEngine;
-                reasearchBonus.KPDShasi += selectedResearch.KPDShasi;
-                reasearchBonus.VesShasi += selectedResearch.VesShasi;
-                reasearchBonus.VesEngine += selectedResearch.VesEngine;
-                reasearchBonus.SlognostEngine += selectedResearch.SlognostEngine;
-                reasearchBonus.SlognostShasi += selectedResearch.SlognostShasi;
+                researchBonus.PowerEngine += selectedResearch.PowerEngine;
+                researchBonus.KPDShasi += selectedResearch.KPDShasi;
+                researchBonus.VesShasi += selectedResearch.VesShasi;
+                researchBonus.VesEngine += selectedResearch.VesEngine;
+                researchBonus.SlognostEngine += selectedResearch.SlognostEngine;
+                researchBonus.SlognostShasi += selectedResearch.SlognostShasi;
 
                 reasearchData.technologys[0] = selectedResearch;
 

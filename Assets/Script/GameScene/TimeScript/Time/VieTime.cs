@@ -9,8 +9,7 @@ namespace GlabalGame
     public class VieTime : MonoBehaviour
     {
         public Text TimeText;
-        public TimeData Time;
-        void Update()
+        public void View(TimeData Time)
         {
             TimeText.text = $"Дата: {Time.week}н {Time.month}м {Time.year}г";
         }

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class LocomotiewView : MonoBehaviour
 {
-    public LocomotiveData data;
+    public LocomotiveController locomotiveController;
     public GameObject Window;
     public Button CancelButton;
     public Button OpenButton;
@@ -39,7 +39,7 @@ public class LocomotiewView : MonoBehaviour
         }
 
         AddLayoutComponents(LocContent);
-
+        var data=locomotiveController.data;
         for (int i = 0; i < data.locomotiews.Count; i++)
         {
             GameObject button = Instantiate(PrefabLocomotiev, LocContent);

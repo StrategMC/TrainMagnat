@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace GlabalGame
 {
-    public class MoneyData : MonoBehaviour
+    public class MoneyData 
     {
         public int money;
     }

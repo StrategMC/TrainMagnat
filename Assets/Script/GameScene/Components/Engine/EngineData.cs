@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EngineData : MonoBehaviour
+public class EngineData
 {
-    public List<Engine> engines=new List<Engine>();
-    
+    public List<Engine> engines;
+    public EngineData()
+    {
+        engines = new List<Engine>();   
+    }
 }
 
 public struct Engine

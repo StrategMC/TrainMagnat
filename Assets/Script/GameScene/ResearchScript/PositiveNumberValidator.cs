@@ -10,7 +10,7 @@ public class PositiveNumberValidator : MonoBehaviour
     {
         if (inputField != null)
         {
-            inputField.text = "1";
+            inputField.text = "0";
             inputField.onValueChanged.AddListener(ValidateInput);
             inputField.onEndEdit.AddListener(ValidateOnEndEdit);
         }

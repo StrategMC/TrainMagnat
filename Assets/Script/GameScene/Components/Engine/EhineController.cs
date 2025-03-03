@@ -9,6 +9,7 @@ public class EhineController : MonoBehaviour
 
     void Start()
     {  
+        data = new EngineData();
     }
     public void AddEngine(string name,int size,int power, int ves, int difficulties)
     {

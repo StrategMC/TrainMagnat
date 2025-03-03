@@ -8,11 +8,11 @@ using UnityEngine.UI;
 public class MoneyView : MonoBehaviour
 {
     public Text TextMoney;
-    public MoneyData Money;
+    public MoneyController MoneyController;
    
     public void Vyvod()
     {
-        TextMoney.text = Preobrazovanie(Money.money);
+        TextMoney.text = Preobrazovanie(MoneyController.Money.money);
     }
     public string Preobrazovanie(int amount)
     {

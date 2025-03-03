@@ -12,11 +12,12 @@ public class ResearchView : MonoBehaviour
     public Transform NoResContent;
     public GameObject ResScrollView;
     public Transform ResContent;
-    public ReasearchData data;
-    public ReasearchBonus bonus;
+    ReasearchBonus bonus;
     public ResearchController researchController;
+    ReasearchData data;
     public void ViewBonus()
     {
+        bonus = researchController.researchBonus;
         BonusText.text = "";
         BonusText.text += "Мощность +" + bonus.PowerEngine + "%" +"\n";
         BonusText.text += "КПД Шасси +" + bonus.KPDShasi + "%" + "\n";
@@ -27,6 +28,7 @@ public class ResearchView : MonoBehaviour
     }
     public void View()
     {
+        data = researchController.reasearchData;
         foreach (Transform child in NoResContent)
         {
             Destroy(child.gameObject);
@@ -59,6 +61,7 @@ public class ResearchView : MonoBehaviour
 
     public void View2()
     {
+        data = researchController.reasearchData;
         foreach (Transform child in ResContent)
         {
             Destroy(child.gameObject);

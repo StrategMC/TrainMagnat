@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Autorization : MonoBehaviour
 {
@@ -35,5 +36,8 @@ public class Autorization : MonoBehaviour
             return;
         }
         OutText.text = "¬ход";
+        PlayerPrefs.SetInt("id player", dbController.SetPlayerId(nameInput.text));
+        PlayerPrefs.Save();
+        SceneManager.LoadScene("MainMenu");
     }
 }

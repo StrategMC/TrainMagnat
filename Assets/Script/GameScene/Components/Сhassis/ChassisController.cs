@@ -5,6 +5,10 @@ using UnityEngine;
 public class ChassisController : MonoBehaviour
 {
     public ChassisData data;
+    public void Start()
+    {
+        data = new ChassisData();
+    }
     public void AdddChassi(string name, int size, int power, int ves, int difficulties)
     {
         Chassi chassi = new Chassi(name, size, power, ves, difficulties);

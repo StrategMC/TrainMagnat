@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LocomotiveData : MonoBehaviour
+public class LocomotiveData
 {
-   public List<Locomotiew> locomotiews=new List<Locomotiew>();
+    public List<Locomotiew> locomotiews;
+    public LocomotiveData()
+    {
+        locomotiews = new List<Locomotiew>();
+    }
 }
 public struct Locomotiew
 {

@@ -8,7 +8,8 @@ public class SelectEngineView : MonoBehaviour
 
     public SelectEngineData engineData;
     public SelectEngine selectEngine;
-    public EngineData data;
+    EngineData data;
+    public EhineController controller;
     public Text nameText;
     public Text sizeText;
     public Text powerText;
@@ -38,6 +39,7 @@ public class SelectEngineView : MonoBehaviour
     }
     public void View()
     {
+        data= controller.data;
         foreach (Transform child in EngContent)
         {
             Destroy(child.gameObject);

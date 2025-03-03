@@ -7,6 +7,7 @@ public class LocomotiveController : MonoBehaviour
     public LocomotiveData data;
     public void AddLocomotiev(string name, int speeed, int power, int difficult)
     {
+        data=new LocomotiveData();
         Locomotiew locomotiew = new Locomotiew(name,speeed, power, difficult);
         data.locomotiews.Add(locomotiew);
     }

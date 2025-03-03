@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class EngineView : MonoBehaviour
 {
-    public EngineData data;
+    public EhineController ehineController;
     public GameObject Window;
     public Button CancelButton;
     public Text nameText;
@@ -32,7 +32,7 @@ public class EngineView : MonoBehaviour
         }
 
         AddLayoutComponents(EngContent);
-        
+        var data=ehineController.data;
             for (int i = 0; i < data.engines.Count; i++)
             {
                 GameObject button = Instantiate(PrefabEngine, EngContent);

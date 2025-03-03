@@ -7,7 +7,8 @@ public class SelectChassisView : MonoBehaviour
 {
     public SelectChassisData chassisData;
     public SelectChassis selectChassis;
-    public ChassisData data;
+    ChassisData data;
+    public ChassisController chassisController;
     public Text nameText;
     public Text sizeText;
     public Text bonusText;
@@ -37,6 +38,7 @@ public class SelectChassisView : MonoBehaviour
     }
     public void View()
     {
+        data = chassisController.data;
         foreach (Transform child in ChsContent)
         {
             Destroy(child.gameObject);

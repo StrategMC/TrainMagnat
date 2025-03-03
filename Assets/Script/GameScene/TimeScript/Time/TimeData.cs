@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace GlabalGame
 {
-    public class TimeData:MonoBehaviour
+    public class TimeData
     {
         public int year;
         public int month;

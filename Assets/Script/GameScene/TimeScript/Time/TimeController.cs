@@ -2,6 +2,7 @@ using GlabalGame;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,8 +13,10 @@ namespace GlobalGame
     {
         public FinanseView finanseView;
         public GameOverController gameOverController;
-        public MoneyData MoneyData;
+        public MoneyController MoneyController;
         public TimeData Time;
+        public VieTime TimeView;
+        public ProgressBarController TimeProgressBar;
         public Button PauseButton;
         public Button PlayButton;
         public Button FastButton;
@@ -23,6 +26,7 @@ namespace GlobalGame
 
         void Start()
         {
+            Time=new TimeData();
             Time.year = 1829;
             Time.month = 1;
             Time.week = 1;
@@ -54,10 +58,12 @@ namespace GlobalGame
 
         void Update()
         {
+          
             if (Time.timeScale > 0)
             {
                 Time.dayProgress += UnityEngine.Time.deltaTime * Time.timeScale;
-
+                TimeView.View(Time);
+                TimeProgressBar.View(Time);
                 if (Time.dayProgress >= 7.0f)
                 {
                     Time.dayProgress = 0;
@@ -67,7 +73,7 @@ namespace GlobalGame
                     weeklyUpdateObjects = new List<IWeeklyUpdate>(FindObjectsOfType<MonoBehaviour>().OfType<IWeeklyUpdate>());
                     foreach (var weeklyUpdateObject in weeklyUpdateObjects)
                     {
-                        if(MoneyData.money<=0)
+                        if(MoneyController.Money.money<=0)
                         {
                             gameOverController.Over();
                             Pause();

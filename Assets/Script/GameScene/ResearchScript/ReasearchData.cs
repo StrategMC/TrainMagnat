@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ReasearchData : MonoBehaviour
+public class ReasearchData 
 {
     public int point;
     public List<Technology> technologys;
     public List<RedyTechnology> Redytechnologys;
-    private void Awake()
+    public ReasearchData()
     {
         technologys = new List<Technology>();
         Redytechnologys= new List<RedyTechnology>();

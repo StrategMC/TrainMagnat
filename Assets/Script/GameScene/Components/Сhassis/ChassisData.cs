@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChassisData : MonoBehaviour
+public class ChassisData
 {
-   public  List<Chassi> chassis=new List<Chassi>();
+    public List<Chassi> chassis;
+    public ChassisData()
+    {
+        chassis = new List<Chassi>();
+    }
 }
 public struct Chassi
 {

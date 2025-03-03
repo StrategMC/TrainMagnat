@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class ChassisView : MonoBehaviour
 {
-    public ChassisData data;
+    public ChassisController ChassisController;
     public GameObject Window;
     public Button CancelButton;
     public Text nameText;
@@ -31,7 +31,7 @@ public class ChassisView : MonoBehaviour
         }
 
         AddLayoutComponents(ChaContent);
-
+        var data=ChassisController.data;
         for (int i = 0; i < data.chassis.Count; i++)
         {
             GameObject button = Instantiate(PrefabChassi, ChaContent);

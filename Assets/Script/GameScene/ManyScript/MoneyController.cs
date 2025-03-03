@@ -10,6 +10,9 @@ namespace GlabalGame
         public MoneyView View;
         private void Start()
         {
+            Money = new MoneyData();
+            Money.money = 300000;
+
             View.Vyvod();
         }
         public void AddMany(int bablo)

@@ -6,7 +6,7 @@ public class EngineDevelopController : MonoBehaviour
 {
     public EngineDevelopData data;
     public EngineDevelopView view;
-    public ReasearchBonus bonus;
+    public ResearchController researchController;
     public void Start()
     {
         PodschetSvoistva();
@@ -14,6 +14,7 @@ public class EngineDevelopController : MonoBehaviour
     }
     public void PodschetSvoistva()
     {
+        ReasearchBonus bonus= researchController.researchBonus;
         // Расчет мощности
         data.power = 50;
         data.power += (int)(data.power * (bonus.PowerEngine / 100f));

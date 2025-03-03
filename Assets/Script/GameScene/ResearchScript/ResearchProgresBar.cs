@@ -7,7 +7,8 @@ using UnityEngine.UI;
 public class ResearchProgresBar : MonoBehaviour
 {
     public Image ProgressBar;
-    public ReasearchData data;
+    public ResearchController ResearchController;
+    ReasearchData data;
     public Text TextProcent;
 
 
@@ -18,6 +19,7 @@ public class ResearchProgresBar : MonoBehaviour
 
     public void Move()
     {
+        data=ResearchController.reasearchData;
         if (data != null && data.technologys != null && data.technologys.Count > 0)
         {
             if (data.technologys[0].need != 0)

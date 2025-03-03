@@ -7,7 +7,7 @@ public class СhassisWindowController : MonoBehaviour
 {
     public СhassisWindowView view;
     public СhassisWindowData data;
-    public ReasearchBonus bonus;
+    public ResearchController researchController;
     public void Start()
     {
         PodschetSvoistv();
@@ -15,6 +15,7 @@ public class СhassisWindowController : MonoBehaviour
 
     public void PodschetSvoistv()
     {
+        ReasearchBonus bonus = researchController.researchBonus;
         //Место под двигатель
         int tempPlace = data.placeE + data.place-1;
         switch(tempPlace)

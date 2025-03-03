@@ -12,7 +12,19 @@ public class DbController : MonoBehaviour
     {
         DBPath = GetDatabasePath();
     }
-
+    public int SetPlayerId(string name)
+    {
+        using (var connection = new SqliteConnection("Data Source=" + DBPath))
+        using (var command = connection.CreateCommand())
+        {
+            connection.Open();
+            command.CommandText = "SELECT id FROM Players WHERE Name = @name LIMIT 1";
+            command.Parameters.AddWithValue("@name", name);
+            SqliteDataReader reader = command.ExecuteReader();
+            return int.Parse(reader.GetValue(0).ToString());
+            
+        }
+    }
     public bool ExaminationUser(string name)
     {
         try
@@ -96,7 +108,7 @@ public class DbController : MonoBehaviour
             File.Copy(Path.Combine(Application.streamingAssetsPath, fileName), path);
         }
         #endif
-        Debug.Log(path);
+        //Debug.Log(path);
         return path;
     }
 }

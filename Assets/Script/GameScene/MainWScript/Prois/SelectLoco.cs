@@ -7,7 +7,7 @@ public class SelectLoco : MonoBehaviour
 {
     public ProisData proisData;
     public Text SelectText;
-    public LocomotiveData data;
+    public LocomotiveController locomotiveController;
     public Button openButton;
     public Button closeButton;
     public GameObject SelectWindows;
@@ -46,6 +46,7 @@ public class SelectLoco : MonoBehaviour
     }
     public void View()
     {
+        var data = locomotiveController.data;
         foreach (Transform child in LocContent)
         {
             Destroy(child.gameObject);
