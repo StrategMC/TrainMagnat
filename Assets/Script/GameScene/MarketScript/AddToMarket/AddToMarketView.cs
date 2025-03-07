@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class AddToMarketView : MonoBehaviour
 {
     public TimeController time;
-    public SkladData skladData;
+    public SkladController skladController;
     public Button OpenButton;
     public Button CloseButton;
     public Button SelectButton;
@@ -63,7 +63,7 @@ public class AddToMarketView : MonoBehaviour
 
         AddLayoutComponents(LocoContent);
 
-        foreach (var locomotive in skladData.lovomotivy)
+        foreach (var locomotive in skladController.skladData.lovomotivy)
         {
             GameObject button = Instantiate(LocoContentPrefab, LocoContent);
             Text[] texts = button.GetComponentsInChildren<Text>();

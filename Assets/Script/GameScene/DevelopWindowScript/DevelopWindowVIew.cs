@@ -11,7 +11,7 @@ public class DevelopWindowVIew : MonoBehaviour
     public TimeController TimeController;
     public Slider Scrollbar;
     public DevelopWindowController controller;
-    public DevelopWindowData data;
+    private DevelopWindowData data;
     public Text LBpointText;
 
     public Button DevelopEngButton;
@@ -33,6 +33,7 @@ public class DevelopWindowVIew : MonoBehaviour
 
     void Start()
     {
+        data=controller.data;
         Scrollbar.onValueChanged.AddListener(UpdateData);
         DevelopEngButton.onClick.AddListener(DEB);
         ViewEngineButton.onClick.AddListener(VEB);

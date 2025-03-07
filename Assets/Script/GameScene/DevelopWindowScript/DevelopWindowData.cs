@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DevelopWindowData : MonoBehaviour
+public class DevelopWindowData 
 {
     public int lvlFinans;
     public int Rashod;
     public float bonus;
-    public void Awake()
+    public DevelopWindowData()
     {
         lvlFinans = 1;
     }

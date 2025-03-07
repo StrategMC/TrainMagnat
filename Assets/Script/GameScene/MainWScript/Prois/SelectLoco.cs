@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class SelectLoco : MonoBehaviour
 {
-    public ProisData proisData;
+    public ProisController proisController;
     public Text SelectText;
     public LocomotiveController locomotiveController;
     public Button openButton;
@@ -37,7 +37,7 @@ public class SelectLoco : MonoBehaviour
     void OnLocomotiewButtonClicked(Locomotiew loco)
     {
         SelectText.text = loco.name;
-        proisData.locomotiew=loco;
+        proisController.ProisData.locomotiew=loco;
 
         NameText.text = loco.name;
         SpeedText.text = loco.speed + "κμ/χ";

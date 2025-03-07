@@ -5,45 +5,48 @@ using UnityEngine.UI;
 public class EngineDevelopReaserchesEngines : MonoBehaviour, IWeeklyUpdate
 {
     public EhineController engineController;
-    public DevelopWindowData data;
-    public bool active=false;
-    public string name;
-    public int size;
-    public int power;
-    public int ves;
-    public int difficulties;
-
-    public float timeResearch;
-    public float reaserches;
+    public DevelopWindowController developWindowController;
+    public EngineDevelopReaserchesEnginesData dataRes;
 
     public Image ProgressBar;
     public Text TextProcent;
+    public void Start()
+    {
+        dataRes=new EngineDevelopReaserchesEnginesData();
+        if (dataRes.active == true)
+        {
+            View();
+        }
+    }
     public void Vyzov(string name, int size, int power, int ves, int difficulties,float timeReasearch)
     {
-        active = true;
-        this.name = name;
-        this.size = size;
-        this.power = power;
-        this.ves = ves;
-        this.difficulties = difficulties;
-        this.timeResearch = timeReasearch;
-        reaserches = 0;
-        ProgressBar.fillAmount = reaserches / timeResearch;
-        TextProcent.text = $"{reaserches}/{timeResearch} ÎÈ";
+        dataRes.active = true;
+        dataRes.name = name;
+        dataRes.size = size;
+        dataRes.power = power;
+        dataRes.ves = ves;
+        dataRes.difficulties = difficulties;
+        dataRes.timeResearch = timeReasearch;
+        dataRes.reaserches = 0;
+        View();
+    }
+    public void View()
+    {
+        ProgressBar.fillAmount = dataRes.reaserches / dataRes.timeResearch;
+        TextProcent.text = $"{dataRes.reaserches}/{dataRes.timeResearch} ÎÈ";
     }
     public void WeekTick()
     {
-        if (active)
+        if (dataRes.active)
         {
-            reaserches = reaserches+ data.bonus;
-            ProgressBar.fillAmount = reaserches / timeResearch;
-            TextProcent.text = $"{reaserches}/{timeResearch} ÎÈ";
-            if (reaserches >= timeResearch)
+            dataRes.reaserches = dataRes.reaserches + developWindowController.data.bonus;
+            View();
+            if (dataRes.reaserches >= dataRes.timeResearch)
             {
-                engineController.AddEngine(name, size, power, ves, difficulties);
+                engineController.AddEngine(dataRes.name, dataRes.size, dataRes.power, dataRes.ves, dataRes.difficulties);
                 TextProcent.text = $"Ãמעמגמ";
                 ProgressBar.fillAmount = 1;
-                active = false;
+                dataRes.active = false;
             }
         }
         else

@@ -15,6 +15,12 @@ public class ResearchView : MonoBehaviour
     ReasearchBonus bonus;
     public ResearchController researchController;
     ReasearchData data;
+    private void Start()
+    {
+        View();
+        View2();
+        ViewBonus();
+    }
     public void ViewBonus()
     {
         bonus = researchController.researchBonus;

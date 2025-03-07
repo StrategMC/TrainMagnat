@@ -18,6 +18,11 @@ public class SaveController : MonoBehaviour
     public ChassisController Chassis;
     public EhineController Ehine;
     public LocomotiveController Locomotive;
+    public SkladController Sklad;
+    public ProisController Prois;
+    public DevelopWindowController Develop;
+    public ChassisWindowReaserch ChassisWindow;
+    public EngineDevelopReaserchesEngines EngineDevelop;
     void Start()
     {
         ExitButtton.onClick.AddListener(ExitAndSave);
@@ -79,7 +84,7 @@ public class SaveController : MonoBehaviour
     {
         string path = Application.persistentDataPath + "/players.json";
         PlayerArray players = Load(path);
-        PlayerData playerData = new PlayerData(Time.Time,Money.Money, Research.researchBonus, Research.reasearchData, Ehine.data, Chassis.data, Locomotive.data);
+        PlayerData playerData = new PlayerData(Time.Time,Money.Money, Research.researchBonus, Research.reasearchData, Ehine.data, Chassis.data, Locomotive.data, Sklad.skladData, Prois.ProisData,Develop.data, EngineDevelop.dataRes,  ChassisWindow.dataRes);
         if (HaveThisPlayer(players))
         {
             players.players[ThisPlayerNum(players)] = playerData;

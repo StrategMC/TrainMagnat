@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProisData : MonoBehaviour
+public class ProisData 
 {
     public int proispoint;
     public Locomotiew locomotiew;
     public int rashod;
     public int proisinweek;
-    private void Start()
+    public ProisData()
     {
-        proispoint = 0;
-        rashod = 0;
+        this.proispoint = proispoint;
+        this.rashod = rashod;
     }
+  
 }
 

@@ -366,6 +366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ButtonAutoriacion: {fileID: 572882026}
+  ButtonNewPlay: {fileID: 1738316089}
 --- !u!4 &250169507
 Transform:
   m_ObjectHideFlags: 0

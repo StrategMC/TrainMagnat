@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class SkladView : MonoBehaviour
 {
-    public SkladData SkladData;
+    public SkladController SkladController;
     public Button OpenButton;
     public Button CloseButton;
     public GameObject Window;
@@ -41,7 +41,7 @@ public class SkladView : MonoBehaviour
 
         AddLayoutComponents(LocoContent);
 
-        foreach(var locomotive in SkladData.lovomotivy)
+        foreach(var locomotive in SkladController.skladData.lovomotivy)
         {
             GameObject button = Instantiate(LocoPrefab, LocoContent);
             Text[] texts = button.GetComponentsInChildren<Text>();

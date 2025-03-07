@@ -8,8 +8,9 @@ public class DevelopWindowController : MonoBehaviour,IWeeklyUpdate
     public DevelopWindowData data;
     public MoneyController moneyController;
     public FinanseView finanseView; 
-    public void Start()
+    public void Awake()
     {
+        data = new DevelopWindowData();
         data.Rashod = 1000;
         data.bonus = 1f;
     }

@@ -8596,7 +8596,6 @@ GameObject:
   m_Component:
   - component: {fileID: 452139656}
   - component: {fileID: 452139658}
-  - component: {fileID: 452139657}
   - component: {fileID: 452139659}
   m_Layer: 0
   m_Name: SkladManager
@@ -8620,18 +8619,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1721035347}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &452139657
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 452139655}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21cc8b131e2ebd6438bea15201b64871, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &452139658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8644,7 +8631,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d01b6824ea04d9145ad4620d319a23b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkladData: {fileID: 452139657}
+  SkladController: {fileID: 452139659}
   OpenButton: {fileID: 1487013176}
   CloseButton: {fileID: 365945499}
   Window: {fileID: 1036789626}
@@ -8667,7 +8654,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e4f1df1809dbbc4483570ca6122b015, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skladData: {fileID: 452139657}
 --- !u!1 &453163686
 GameObject:
   m_ObjectHideFlags: 0
@@ -10985,6 +10971,11 @@ MonoBehaviour:
   Chassis: {fileID: 877487196}
   Ehine: {fileID: 2025124161}
   Locomotive: {fileID: 925654871}
+  Sklad: {fileID: 452139659}
+  Prois: {fileID: 1721035350}
+  Develop: {fileID: 1464092048}
+  ChassisWindow: {fileID: 2007026122}
+  EngineDevelop: {fileID: 624569511}
 --- !u!114 &608006030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11594,15 +11585,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   engineController: {fileID: 2025124161}
-  data: {fileID: 1464092049}
-  active: 0
-  name: 
-  size: 0
-  power: 0
-  ves: 0
-  difficulties: 0
-  timeResearch: 0
-  reaserches: 0
+  developWindowController: {fileID: 1464092048}
   ProgressBar: {fileID: 782124846}
   TextProcent: {fileID: 1707299547}
 --- !u!1 &627295436
@@ -26726,7 +26709,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 266a67023e79cf941935051b4d04fcca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  proisData: {fileID: 1721035348}
+  proisController: {fileID: 1721035350}
   SelectText: {fileID: 1746059438}
   locomotiveController: {fileID: 925654871}
   openButton: {fileID: 717691823}
@@ -27243,7 +27226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time: {fileID: 228286316}
-  skladData: {fileID: 452139657}
+  skladController: {fileID: 452139659}
   OpenButton: {fileID: 25208840}
   CloseButton: {fileID: 982433207}
   SelectButton: {fileID: 398156106}
@@ -27993,7 +27976,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1464092046}
-  - component: {fileID: 1464092049}
   - component: {fileID: 1464092048}
   - component: {fileID: 1464092047}
   m_Layer: 0
@@ -28036,7 +28018,6 @@ MonoBehaviour:
   TimeController: {fileID: 228286316}
   Scrollbar: {fileID: 1080458030}
   controller: {fileID: 1464092048}
-  data: {fileID: 1464092049}
   LBpointText: {fileID: 1674071600}
   DevelopEngButton: {fileID: 1940695680}
   DevelopEngine: {fileID: 1305062870}
@@ -28062,24 +28043,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26b6b5ba2735e9243affa95d1e6be354, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 1464092049}
   moneyController: {fileID: 1892622494}
   finanseView: {fileID: 1892622496}
---- !u!114 &1464092049
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1464092045}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28f9dd43f90c2c24291a71808e9dcdb8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lvlFinans: 0
-  Rashod: 0
-  bonus: 0
 --- !u!1 &1466062019
 GameObject:
   m_ObjectHideFlags: 0
@@ -32893,7 +32858,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1721035347}
-  - component: {fileID: 1721035348}
   - component: {fileID: 1721035349}
   - component: {fileID: 1721035350}
   m_Layer: 0
@@ -32920,21 +32884,6 @@ Transform:
   - {fileID: 452139656}
   m_Father: {fileID: 11251996}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1721035348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1721035346}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbd75014fd8920649841c04d11761b9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  proispoint: 0
-  rashod: 0
-  proisinweek: 0
 --- !u!114 &1721035349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32947,7 +32896,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85bca70ec9bf5ff45bba965d35bc441c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ProisData: {fileID: 1721035348}
   ProisController: {fileID: 1721035350}
   pointText: {fileID: 964222043}
   proisText: {fileID: 538438409}
@@ -32967,9 +32915,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FinanseView: {fileID: 1892622496}
   moneyController: {fileID: 1892622494}
-  ProisData: {fileID: 1721035348}
   ProisView: {fileID: 1721035349}
-  SkladData: {fileID: 452139657}
+  SkladController: {fileID: 452139659}
 --- !u!1 &1724001320
 GameObject:
   m_ObjectHideFlags: 0
@@ -37739,15 +37686,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 877487196}
-  data: {fileID: 1464092049}
-  active: 0
-  name: 
-  size: 0
-  bonusKpd: 0
-  ves: 0
-  difficulties: 0
-  necessaryReasearchPoint: 0
-  haveReasearchPoint: 0
+  developWindowController: {fileID: 1464092048}
   ProgressBar: {fileID: 481444459}
   TextProcent: {fileID: 1500758643}
 --- !u!1 &2014776565

@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkladData : MonoBehaviour
+public class SkladData 
 {
     public Dictionary<Locomotiew, int> lovomotivy;
-    private void Start()
+    public SkladData()
     {
-        lovomotivy=new Dictionary<Locomotiew, int>();
+        lovomotivy = new Dictionary<Locomotiew, int>();
     }
 }
