@@ -2,32 +2,35 @@ using UnityEngine;
 using UnityEngine.UI;
 public class FinanseView : MonoBehaviour
 {
+    public FinanseViewData data;
     public Text ProfitForLocomotiveSellText;
     public Text ÑonsumptionForProductionText;
     public Text ConsumptionForResearchText;
     public Text ConsumptionForDevelopText;
 
-    public int profitforlocomotievesell;
-    public int consumptionforproduction;
-    public int consumptionforresearch;
-    public int consumptionfordevelop;
+    private void Start()
+    {
+        data=new FinanseViewData();
+
+        View();
+    }
 
     //private int lastWeekConsumptionProduction;
     //private int lastWeekConsumptionResearch;
     //private int lastWeekConsumptionDevelop;
 
-  
+
     public void View()
     {
-        ÑonsumptionForProductionText.text = $"{consumptionforproduction}$";
-        ConsumptionForResearchText.text = $"{consumptionforresearch}$";
-        ConsumptionForDevelopText.text = $"{consumptionfordevelop}$";
-        ProfitForLocomotiveSellText.text = $"{profitforlocomotievesell}$";
+        ÑonsumptionForProductionText.text = $"{data.consumptionforproduction}$";
+        ConsumptionForResearchText.text = $"{data.consumptionforresearch}$";
+        ConsumptionForDevelopText.text = $"{data.consumptionfordevelop}$";
+        ProfitForLocomotiveSellText.text = $"{data.profitforlocomotievesell}$";
 
-        profitforlocomotievesell = 0;
-        consumptionforproduction = 0;
-        consumptionforresearch = 0;
-        consumptionfordevelop = 0;
+        data.profitforlocomotievesell = 0;
+        data.consumptionforproduction = 0;
+        data.consumptionforresearch = 0;
+        data.consumptionfordevelop = 0;
     }
 
    

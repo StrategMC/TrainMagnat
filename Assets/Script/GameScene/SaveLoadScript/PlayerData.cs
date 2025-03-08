@@ -19,8 +19,9 @@ public class PlayerData
     public DevelopWindowData DevelopWindowData;
     public EngineDevelopReaserchesEnginesData EngineDevelop;
     public ChassisWindowReaserchData ChassisDevelop;
+    public FinanseViewData FinanseViewData;
     public int player_id;
-    public PlayerData(TimeData TimeData, MoneyData MoneyData, ReasearchBonus ReasearchBonus, ReasearchData ReasearchData, EngineData EngineData, ChassisData ChassisData, LocomotiveData LocomotiveData, SkladData SkladData, ProisData ProisData, DevelopWindowData DevelopWindowData, EngineDevelopReaserchesEnginesData EngineDevelop, ChassisWindowReaserchData ChassisDevelop)
+    public PlayerData(TimeData TimeData, MoneyData MoneyData, ReasearchBonus ReasearchBonus, ReasearchData ReasearchData, EngineData EngineData, ChassisData ChassisData, LocomotiveData LocomotiveData, SkladData SkladData, ProisData ProisData, DevelopWindowData DevelopWindowData, EngineDevelopReaserchesEnginesData EngineDevelop, ChassisWindowReaserchData ChassisDevelop, FinanseViewData FinanseViewData)
     {
         player_id = PlayerPrefs.GetInt("id player");
         this.TimeData = TimeData;
@@ -35,6 +36,7 @@ public class PlayerData
         this.DevelopWindowData = DevelopWindowData;
         this.EngineDevelop = EngineDevelop;
         this.ChassisDevelop= ChassisDevelop;
+        this.FinanseViewData = FinanseViewData;
     }
 
 }
