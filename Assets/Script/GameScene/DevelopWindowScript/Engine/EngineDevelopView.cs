@@ -45,7 +45,7 @@ public class EngineDevelopView : MonoBehaviour
             engineDevelopReaserchesEngines.Vyzov(inputField.text, data.size, data.power, data.ves, data.difficulties, data.timeResearch);
             Window.SetActive(false);
             moneyController.RemoveMany(data.manyResearch);
-            finanseView.consumptionfordevelop += data.manyResearch;
+            finanseView.data.consumptionfordevelop += data.manyResearch;
             //finanseView.View();
 
         }

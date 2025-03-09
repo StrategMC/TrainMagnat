@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class CompanyView : MonoBehaviour, IWeeklyUpdate
 {
+    public CompanyController companyController;
     public GameObject companyButtonPrefab;
     public Transform buttonParent;
     public GameObject lineScrollView;
@@ -25,7 +26,7 @@ public class CompanyView : MonoBehaviour, IWeeklyUpdate
         AddLayoutComponents(lineContent);
         AddLayoutComponents(locomotiveContent);
 
-        companies = new List<CompanyData>(FindObjectsOfType<CompanyData>());
+        companies = companyController.Companies;
 
         foreach (CompanyData company in companies)
         {

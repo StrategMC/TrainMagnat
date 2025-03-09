@@ -77,7 +77,7 @@ public class ResearchController : MonoBehaviour, IYearsUpdate, IWeeklyUpdate
         if (reasearchData.technologys.Count > 0)
         {
             moneyController.RemoveMany(reasearchData.point * 5000);
-            finanseView.consumptionforresearch += reasearchData.point * 5000;
+            finanseView.data.consumptionforresearch += reasearchData.point * 5000;
             //finanseView.View();
             var selectedResearch = reasearchData.technologys[0];
 

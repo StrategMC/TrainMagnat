@@ -11,9 +11,13 @@ public class DemandController : MonoBehaviour, IWeeklyUpdate
     public FinanseView finanseView;
     public ItogView itogView;
 
-    int allsell;
-    int playersell;
-    int profit;
+    DemandData demandData;
+    void Start()
+    {
+       MarketData=new MarketData();
+       demandData =new DemandData();
+    }
+
     public void AddDemand(LineData line, int col)
     {
         Demand temp = new Demand(line, col);
@@ -22,23 +26,25 @@ public class DemandController : MonoBehaviour, IWeeklyUpdate
 
     public void WeekTick()
     {
-        finanseView.profitforlocomotievesell += profit;
-        //finanseView.View();
-        itogView.Init(allsell, playersell, profit);
+        finanseView.data.profitforlocomotievesell += demandData.profit;
+
+        itogView.Init(demandData.allsell, demandData.playersell, demandData.profit);
         itogView.View();
+
         MarketView.PredlogenieView();
         MarketView.DemandView();
+
         List<Demand> demandsToRemove = new List<Demand>();
-        allsell=0;
-        playersell=0;
-        profit=0;
+        demandData.allsell = 0;
+        demandData.playersell = 0;
+        demandData.profit = 0;
         for (int i = 0; i < MarketData.demands.Count; i++)
         {
             LineData line = MarketData.demands[i].line;
 
             while (line.Locomotives.Count < line.needLoc && MarketData.supplys.Count > 0)
             {
-                allsell++;
+                demandData.allsell++;
                 if (!BuyLoco(line))
                 {
                     break;
@@ -69,17 +75,15 @@ public class DemandController : MonoBehaviour, IWeeklyUpdate
 
         Supply bestSupply = MarketData.supplys[index];
 
-        CompanyLocomotiveData newLoco = new GameObject("Locomotive").AddComponent<CompanyLocomotiveData>();
-        newLoco.Name = bestSupply.loco.name;
-        newLoco.ostalos = 20;
+        CompanyLocomotiveData newLoco = new CompanyLocomotiveData(bestSupply.loco.name, 20);
 
         line.Locomotives.Add(newLoco);
 
         bestSupply.col -= 1;
         if (bestSupply.CompanyName == "Player")
         {
-            playersell++;
-            profit += bestSupply.cost;
+            demandData.playersell++;
+            demandData.profit += bestSupply.cost;
             MoneyController.AddMany(bestSupply.cost);
         }
         if (bestSupply.col <= 0)

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MarketData : MonoBehaviour
+public class MarketData
 {
    public List<Supply> supplys=new List<Supply>();
    public List<Demand> demands=new List<Demand> ();

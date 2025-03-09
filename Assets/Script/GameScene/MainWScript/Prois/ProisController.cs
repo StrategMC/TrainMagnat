@@ -45,7 +45,7 @@ public class ProisController : MonoBehaviour,IWeeklyUpdate
                 SkladController.skladData.lovomotivy.Add(ProisData.locomotiew, ProisData.proisinweek);
             }
             moneyController.RemoveMany(ProisData.proispoint);
-            FinanseView.consumptionforproduction+=ProisData.proispoint;
+            FinanseView.data.consumptionforproduction+=ProisData.proispoint;
         }
         else
         {

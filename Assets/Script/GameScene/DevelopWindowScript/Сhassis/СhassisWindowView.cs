@@ -56,7 +56,7 @@ public class СhassisWindowView : MonoBehaviour
             ChassisWindowReaserch.Vyzov(inputField.text, data.placeEngine, data.bonusKPD, data.ves, data.difficult, data.point);
             Window.SetActive(false);
             MoneyController.RemoveMany(data.money);
-            FinanseView.consumptionfordevelop += data.money;
+            FinanseView.data.consumptionfordevelop += data.money;
             //FinanseView.View();
         }
         else

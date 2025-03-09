@@ -17,7 +17,7 @@ public class DevelopWindowController : MonoBehaviour,IWeeklyUpdate
     public void WeekTick()
     {
         moneyController.RemoveMany(data.Rashod);
-        finanseView.consumptionfordevelop += data.Rashod;
+        finanseView.data.consumptionfordevelop += data.Rashod;
         //finanseView.View();
     }
     public void Obnova()
