@@ -5,9 +5,12 @@ using UnityEngine;
 public class ChassisController : MonoBehaviour
 {
     public ChassisData data;
-    public void Start()
+    public void Awake()
     {
-        data = new ChassisData();
+        if (PlayerPrefs.GetInt("Load") == 0)
+        {
+            data = new ChassisData();
+        }
     }
     public void AdddChassi(string name, int size, int power, int ves, int difficulties)
     {

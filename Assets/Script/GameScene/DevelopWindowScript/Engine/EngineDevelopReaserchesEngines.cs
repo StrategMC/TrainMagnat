@@ -10,9 +10,12 @@ public class EngineDevelopReaserchesEngines : MonoBehaviour, IWeeklyUpdate
 
     public Image ProgressBar;
     public Text TextProcent;
-    public void Start()
+    public void Awake()
     {
-        dataRes=new EngineDevelopReaserchesEnginesData();
+        if (PlayerPrefs.GetInt("Load") == 0)
+        {
+            dataRes = new EngineDevelopReaserchesEnginesData();
+        }
         if (dataRes.active == true)
         {
             View();

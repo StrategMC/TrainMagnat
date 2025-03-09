@@ -5,9 +5,12 @@ using UnityEngine;
 public class LocomotiveController : MonoBehaviour
 {
     public LocomotiveData data;
-    private void Start()
+    private void Awake()
     {
-        data = new LocomotiveData();
+        if (PlayerPrefs.GetInt("Load") == 0)
+        {
+            data = new LocomotiveData();
+        }
     }
     public void AddLocomotiev(string name, int speeed, int power, int difficult)
     {

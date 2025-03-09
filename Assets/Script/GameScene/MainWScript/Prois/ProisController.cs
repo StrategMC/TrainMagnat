@@ -12,7 +12,10 @@ public class ProisController : MonoBehaviour,IWeeklyUpdate
    public SkladController SkladController;
    public void Awake()
    {
-        ProisData = new ProisData();
+        if (PlayerPrefs.GetInt("Load") == 0)
+        {
+            ProisData = new ProisData();
+        }
    }
    public void AddPoint()
    {

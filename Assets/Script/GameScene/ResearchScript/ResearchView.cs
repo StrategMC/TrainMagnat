@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class ResearchView : MonoBehaviour
 {
@@ -15,11 +16,18 @@ public class ResearchView : MonoBehaviour
     ReasearchBonus bonus;
     public ResearchController researchController;
     ReasearchData data;
+
+    public InputField inputField;
+    public Text textOut;
+
     private void Start()
     {
+        data = researchController.reasearchData;
         View();
         View2();
         ViewBonus();
+        inputField.text = Convert.ToString(data.point);
+        textOut.text = Convert.ToString(data.point);
     }
     public void ViewBonus()
     {

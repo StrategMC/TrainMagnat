@@ -9,21 +9,24 @@ public class CompanyController : MonoBehaviour, IWeeklyUpdate
     public List<CompanyData> Companies;
     public DemandController DemandController;
 
-    void Start()
+    void Awake()
     {
-       Companies=new List<CompanyData>();
+        if (PlayerPrefs.GetInt("Load") == 0)
+        {
+            Companies = new List<CompanyData>();
 
-        //Временно
-        CompanyData company1 = new CompanyData("Ямал");
-        CompanyData company2 = new CompanyData("Шпалы и Рельсы");
-        CompanyData company3 = new CompanyData("СибирьЖД");
-        CompanyData company4 = new CompanyData("Магистраль \"Урал\"");
-        CompanyData company5 = new CompanyData("Беломор");
-        Companies.Add(company1);
-        Companies.Add(company2);
-        Companies.Add(company3);
-        Companies.Add(company4);
-        Companies.Add(company5);
+            //Временно
+            CompanyData company1 = new CompanyData("Ямал");
+            CompanyData company2 = new CompanyData("Шпалы и Рельсы");
+            CompanyData company3 = new CompanyData("СибирьЖД");
+            CompanyData company4 = new CompanyData("Магистраль \"Урал\"");
+            CompanyData company5 = new CompanyData("Беломор");
+            Companies.Add(company1);
+            Companies.Add(company2);
+            Companies.Add(company3);
+            Companies.Add(company4);
+            Companies.Add(company5);
+        }
     }
 
     public void WeekTick()

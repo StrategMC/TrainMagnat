@@ -7,9 +7,12 @@ public class EhineController : MonoBehaviour
 {
     public EngineData data;
 
-    void Start()
-    {  
-        data = new EngineData();
+    void Awake()
+    {
+        if (PlayerPrefs.GetInt("Load") == 0)
+        {
+            data = new EngineData();
+        }
     }
     public void AddEngine(string name,int size,int power, int ves, int difficulties)
     {

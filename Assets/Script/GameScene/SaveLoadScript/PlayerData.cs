@@ -19,9 +19,13 @@ public class PlayerData
     public DevelopWindowData DevelopWindowData;
     public EngineDevelopReaserchesEnginesData EngineDevelop;
     public ChassisWindowReaserchData ChassisDevelop;
-    public FinanseViewData FinanseViewData;
+    public FinanseViewData FinanseView;
+    public List<CompanyData> Companies;
+    public MarketData Market;
+    public DemandData Demand;
+    public List<EnemyData> Enemies;
     public int player_id;
-    public PlayerData(TimeData TimeData, MoneyData MoneyData, ReasearchBonus ReasearchBonus, ReasearchData ReasearchData, EngineData EngineData, ChassisData ChassisData, LocomotiveData LocomotiveData, SkladData SkladData, ProisData ProisData, DevelopWindowData DevelopWindowData, EngineDevelopReaserchesEnginesData EngineDevelop, ChassisWindowReaserchData ChassisDevelop, FinanseViewData FinanseViewData)
+    public PlayerData(TimeData TimeData, MoneyData MoneyData, ReasearchBonus ReasearchBonus, ReasearchData ReasearchData, EngineData EngineData, ChassisData ChassisData, LocomotiveData LocomotiveData, SkladData SkladData, ProisData ProisData, DevelopWindowData DevelopWindowData, EngineDevelopReaserchesEnginesData EngineDevelop, ChassisWindowReaserchData ChassisDevelop, FinanseViewData FinanseView, List<CompanyData> Companies, MarketData MarketData, DemandData DemandData, List<EnemyData> Enemies)
     {
         player_id = PlayerPrefs.GetInt("id player");
         this.TimeData = TimeData;
@@ -35,8 +39,12 @@ public class PlayerData
         this.ProisData = ProisData;
         this.DevelopWindowData = DevelopWindowData;
         this.EngineDevelop = EngineDevelop;
-        this.ChassisDevelop= ChassisDevelop;
-        this.FinanseViewData = FinanseViewData;
+        this.ChassisDevelop = ChassisDevelop;
+        this.FinanseView = FinanseView;
+        this.Companies = Companies;
+        this.Market = MarketData;
+        this.Demand = DemandData;
+        this.Enemies=Enemies;
     }
 
 }

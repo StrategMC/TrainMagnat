@@ -11,11 +11,15 @@ public class ChassisWindowReaserch : MonoBehaviour, IWeeklyUpdate
 
     public Image ProgressBar;
     public Text TextProcent;
-    void Start()
+    void Awake()
     {
-        dataRes = new ChassisWindowReaserchData();
-        if (dataRes.active==true)
+        if (PlayerPrefs.GetInt("Load") == 0)
         {
+            dataRes = new ChassisWindowReaserchData();
+        }
+        if (dataRes.active == true)
+        {
+            View();
         }
     }
     public void Vyzov(string name, int size, int bonus, int ves, int difficulties, float necessaryReasearchPoint)

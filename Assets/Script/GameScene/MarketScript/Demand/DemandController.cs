@@ -11,11 +11,22 @@ public class DemandController : MonoBehaviour, IWeeklyUpdate
     public FinanseView finanseView;
     public ItogView itogView;
 
-    DemandData demandData;
-    void Start()
+    public DemandData demandData;
+    void Awake()
     {
-       MarketData=new MarketData();
-       demandData =new DemandData();
+        if (PlayerPrefs.GetInt("Load") == 0)
+        {
+            MarketData = new MarketData();
+            demandData = new DemandData();
+        }
+        else
+        {
+            MarketView.LastPredlogenieView();
+            MarketView.LastDemandView();
+        }
+        itogView.Init(demandData.lastWeekAllSell, demandData.lastWeekPlayerSell, demandData.lastWeekProfit);
+        itogView.View();
+        
     }
 
     public void AddDemand(LineData line, int col)
@@ -26,13 +37,31 @@ public class DemandController : MonoBehaviour, IWeeklyUpdate
 
     public void WeekTick()
     {
-        finanseView.data.profitforlocomotievesell += demandData.profit;
-
-        itogView.Init(demandData.allsell, demandData.playersell, demandData.profit);
-        itogView.View();
-
+        MarketData.Lastsupplys.Clear();
+        MarketData.Lastsdemands.Clear();
+        foreach (var supply in MarketData.supplys)
+        {
+            MarketData.Lastsupplys.Add(new Supply(supply.CompanyName, supply.loco, supply.col, supply.cost));
+        }
+        foreach (var demand in MarketData.demands)
+        {
+            MarketData.Lastsdemands.Add(new Demand(demand.line, demand.col));
+        }
+       
         MarketView.PredlogenieView();
         MarketView.DemandView();
+
+        finanseView.data.profitforlocomotievesell += demandData.profit;
+
+        demandData.lastWeekAllSell = demandData.allsell;
+        demandData.lastWeekPlayerSell = demandData.playersell;
+        demandData.lastWeekProfit = demandData.profit;
+        
+      
+        itogView.Init(demandData.lastWeekAllSell, demandData.lastWeekPlayerSell, demandData.lastWeekProfit);
+        itogView.View();
+
+        
 
         List<Demand> demandsToRemove = new List<Demand>();
         demandData.allsell = 0;

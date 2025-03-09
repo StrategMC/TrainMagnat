@@ -14,6 +14,7 @@ public class CompanyData
         for (int i = 0; i < 2; i++)
         {
             LineData line = new LineData($"{Name} {i + 1}", 100);
+            Lines.Add(line);    
         }
     }
 }

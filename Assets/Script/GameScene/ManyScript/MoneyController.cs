@@ -8,10 +8,13 @@ namespace GlabalGame
     {
         public MoneyData Money;
         public MoneyView View;
-        private void Start()
+        private void Awake()
         {
-            Money = new MoneyData();
-            Money.money = 300000;
+            if (PlayerPrefs.GetInt("Load") == 0)
+            {
+                Money = new MoneyData();
+                Money.money = 300000;
+            }
 
             View.Vyvod();
         }

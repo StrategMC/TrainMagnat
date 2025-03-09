@@ -6,6 +6,11 @@ public class FinanseViewData
     public int consumptionforproduction;
     public int consumptionforresearch;
     public int consumptionfordevelop;
+
+    public int lastprofitforlocomotievesell;
+    public int lastconsumptionforproduction;
+    public int lastconsumptionforresearch;
+    public int lastconsumptionfordevelop;
     public FinanseViewData()
     {
        profitforlocomotievesell = 0;

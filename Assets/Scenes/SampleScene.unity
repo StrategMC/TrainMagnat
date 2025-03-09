@@ -9603,6 +9603,8 @@ MonoBehaviour:
   ResScrollView: {fileID: 2064998891}
   ResContent: {fileID: 1868774158}
   researchController: {fileID: 521062722}
+  inputField: {fileID: 1853391407}
+  textOut: {fileID: 1591748121}
 --- !u!114 &521062725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10977,6 +10979,9 @@ MonoBehaviour:
   ChassisWindow: {fileID: 2007026122}
   EngineDevelop: {fileID: 624569511}
   FinanseView: {fileID: 1892622496}
+  Company: {fileID: 2082171512}
+  Demand: {fileID: 1420874053}
+  Enemy: {fileID: 1396077428}
 --- !u!114 &608006030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10990,6 +10995,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsLoad: 0
+  Time: {fileID: 228286316}
+  Money: {fileID: 1892622494}
+  Research: {fileID: 521062722}
+  Chassis: {fileID: 877487196}
+  Ehine: {fileID: 2025124161}
+  Locomotive: {fileID: 925654871}
+  Sklad: {fileID: 452139659}
+  Prois: {fileID: 1721035350}
+  Develop: {fileID: 1464092048}
+  ChassisWindow: {fileID: 2007026122}
+  EngineDevelop: {fileID: 624569511}
+  FinanseView: {fileID: 1892622496}
+  Company: {fileID: 2082171512}
+  Demand: {fileID: 1420874053}
+  Enemy: {fileID: 1396077428}
 --- !u!1 &612256068
 GameObject:
   m_ObjectHideFlags: 0
@@ -26124,9 +26144,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1396077429}
   - component: {fileID: 1396077428}
-  - component: {fileID: 1396077427}
-  - component: {fileID: 1396077426}
-  - component: {fileID: 1396077425}
   m_Layer: 0
   m_Name: EnemyManager
   m_TagString: Untagged
@@ -26134,47 +26151,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1396077425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1396077424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 957dcd3f0820b304aa28d2c80fc0088c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  name: "\u0410\u0440\u043A\u0430\u0434\u0438\u0439"
---- !u!114 &1396077426
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1396077424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66b33b5552922ab47b1ce3a3fc3bc8a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyData: {fileID: 1396077425}
-  marketData: {fileID: 1420874052}
-  marketView: {fileID: 1420874051}
---- !u!114 &1396077427
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1396077424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 957dcd3f0820b304aa28d2c80fc0088c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  name: "\u041F\u0430\u0440\u043E\u0432\u043E\u0437\u043E\u0432"
 --- !u!114 &1396077428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26187,8 +26163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66b33b5552922ab47b1ce3a3fc3bc8a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyData: {fileID: 1396077427}
-  marketData: {fileID: 1420874052}
+  demandController: {fileID: 1420874053}
   marketView: {fileID: 1420874051}
 --- !u!4 &1396077429
 Transform:
@@ -26972,9 +26947,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1420874050}
   - component: {fileID: 1420874051}
-  - component: {fileID: 1420874052}
   - component: {fileID: 1420874053}
-  - component: {fileID: 1420874054}
   m_Layer: 0
   m_Name: MarkerManager
   m_TagString: Untagged
@@ -27014,19 +26987,7 @@ MonoBehaviour:
   PredlogeniePrefab: {fileID: 350133312353557332, guid: 92473085b45c1544fad9fb4b7dfb211e, type: 3}
   DemandContent: {fileID: 1457274668}
   DemandPrefab: {fileID: 350133312353557332, guid: 2367418c7f0be6f4e85e28e33e9efb90, type: 3}
-  MarketData: {fileID: 1420874052}
---- !u!114 &1420874052
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1420874049}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bba12e4dfff831945b4cf9f8ba823962, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  DemandController: {fileID: 1420874053}
 --- !u!114 &1420874053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27040,22 +27001,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoneyController: {fileID: 1892622494}
-  MarketData: {fileID: 1420874052}
   MarketView: {fileID: 1420874051}
   finanseView: {fileID: 1892622496}
   itogView: {fileID: 1428263078}
---- !u!114 &1420874054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1420874049}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e439e5d7934fa3468b9e2fb526f1e20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1428263074
 GameObject:
   m_ObjectHideFlags: 0
@@ -27129,7 +27077,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e88cd16d2d208448a19851295a85925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  marketData: {fileID: 1420874052}
+  demandController: {fileID: 1420874053}
   marketView: {fileID: 1420874051}
   skladController: {fileID: 452139659}
 --- !u!114 &1428263078
@@ -39552,6 +39500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46d35df432741b64d8655eacb58f8fd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  companyController: {fileID: 2082171512}
   companyButtonPrefab: {fileID: 3814661121588810478, guid: 74b5718ee58329848bed75ea693e8558, type: 3}
   buttonParent: {fileID: 995809430}
   lineScrollView: {fileID: 1527598258}
@@ -39572,7 +39521,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9f83e07f3c8c46478ca9db1c9b00065, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Company: {fileID: 0}
   DemandController: {fileID: 1420874053}
 --- !u!1 &2085120529
 GameObject:

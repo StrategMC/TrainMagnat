@@ -3,9 +3,12 @@ using UnityEngine;
 public class SkladController : MonoBehaviour
 {
     public SkladData skladData;
-    private void Start()
+    private void Awake()
     {
-        skladData = new SkladData();
+        if (PlayerPrefs.GetInt("Load") == 0)
+        {
+            skladData = new SkladData();
+        }
     }
     public void MinusPoezda(Locomotiew loco, int count)
     {

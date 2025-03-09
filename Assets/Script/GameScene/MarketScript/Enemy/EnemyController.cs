@@ -4,44 +4,60 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour, IWeeklyUpdate, IYearsUpdate
 {
-    public EnemyData enemyData;
-    public MarketData marketData;
+    public List<EnemyData> enemies;
+    public DemandController demandController;
     public MarketView marketView;
-    public void Start()
+    public void Awake()
     {
-        Locomotiew loco= new Locomotiew($"{enemyData.name} 1", Random.Range(50,70),70,1);
-        enemyData.locomotiews.Add(loco);
+        if (PlayerPrefs.GetInt("Load") == 0)
+        {
+            enemies = new List<EnemyData>();
+            EnemyData enemy1 = new EnemyData("Аркадий");
+            EnemyData enemy2 = new EnemyData("Паровозов");
+            enemies.Add(enemy1);
+            enemies.Add(enemy2);
+            foreach (EnemyData enemy in enemies)
+            {
+                Locomotiew loco = new Locomotiew($"{enemy.name} 1", Random.Range(50, 70), 70, 1);
+                enemy.locomotiews.Add(loco);
+            }
+        }
+       
+
     }
     public void WeekTick()
     {
-        AddToMarket(enemyData.locomotiews[enemyData.locomotiews.Count - 1], Random.Range(1000, 7000), Random.Range(1, 10));
+        foreach (EnemyData enemy in enemies)
+        {
+            AddToMarket(enemy.locomotiews[enemy.locomotiews.Count - 1], Random.Range(1000, 7000), Random.Range(1, 10));
+        }
     }
     public void AddToMarket(Locomotiew loco, int cost, int count)
     {
         if (Sodergit(loco))
         {
             Supply sup = new Supply("Enemy", loco, count, cost);
-            marketData.supplys.Add(sup);
+            demandController.MarketData.supplys.Add(sup);
         }
         else
         {
-            for (int i = 0; i < marketData.supplys.Count; i++)
+            for (int i = 0; i < demandController.MarketData.supplys.Count; i++)
             {
-                if (loco.name == marketData.supplys[i].loco.name)
+                if (loco.name == demandController.MarketData.supplys[i].loco.name)
                 {
-                    marketData.supplys[i] = new Supply(marketData.supplys[i].CompanyName, marketData.supplys[i].loco, marketData.supplys[i].col + count, cost);
+                    demandController.MarketData.supplys[i] = new Supply(demandController.MarketData.supplys[i].CompanyName, demandController.MarketData.supplys[i].loco, demandController.MarketData.supplys[i].col + count, cost);
                 }
             }
         }
-        marketView.PredlogenieView();
+       // marketView.PredlogenieView();
     }
     private bool Sodergit(Locomotiew loco)
     {
-        if (marketData != null && marketData.supplys != null)
+        if (demandController.MarketData != null && demandController.MarketData.supplys != null)
         {
-            for (int i = 0; i < marketData.supplys.Count; i++)
+            for (int i = 0; i < demandController.MarketData.supplys.Count; i++)
             {
-                if (loco.name == marketData.supplys[i].loco.name)
+                if (loco.name == demandController.MarketData.supplys[i].loco.name)
                 {
                     return false;
                 }
@@ -56,7 +72,10 @@ public class EnemyController : MonoBehaviour, IWeeklyUpdate, IYearsUpdate
     }
     public void YearsTick()
     {
-        Locomotiew loco = new Locomotiew($"{enemyData.name} 2", Random.Range(60, 80), 90, 1);
-        enemyData.locomotiews.Add(loco);
+        foreach (EnemyData enemy in enemies)
+        {
+            Locomotiew loco = new Locomotiew($"{enemy.name} 2", Random.Range(60, 80), 90, 1);
+            enemy.locomotiews.Add(loco);
+        }
     }
 }

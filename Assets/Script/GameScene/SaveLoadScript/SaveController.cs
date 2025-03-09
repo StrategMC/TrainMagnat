@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 using Newtonsoft.Json;
 using GlobalGame;
 using System.IO;
-using static UnityEditor.Experimental.GraphView.GraphView;
 using GlabalGame;
 
 public class SaveController : MonoBehaviour
@@ -24,6 +23,9 @@ public class SaveController : MonoBehaviour
     public ChassisWindowReaserch ChassisWindow;
     public EngineDevelopReaserchesEngines EngineDevelop;
     public FinanseView FinanseView;
+    public CompanyController Company;
+    public DemandController Demand;
+    public EnemyController Enemy;
     void Start()
     {
         ExitButtton.onClick.AddListener(ExitAndSave);
@@ -85,7 +87,7 @@ public class SaveController : MonoBehaviour
     {
         string path = Application.persistentDataPath + "/players.json";
         PlayerArray players = Load(path);
-        PlayerData playerData = new PlayerData(Time.Time,Money.Money, Research.researchBonus, Research.reasearchData, Ehine.data, Chassis.data, Locomotive.data, Sklad.skladData, Prois.ProisData,Develop.data, EngineDevelop.dataRes,  ChassisWindow.dataRes, FinanseView.data);
+        PlayerData playerData = new PlayerData(Time.Time,Money.Money, Research.researchBonus, Research.reasearchData, Ehine.data, Chassis.data, Locomotive.data, Sklad.skladData, Prois.ProisData,Develop.data, EngineDevelop.dataRes,  ChassisWindow.dataRes, FinanseView.data,Company.Companies, Demand.MarketData, Demand.demandData, Enemy.enemies);
         if (HaveThisPlayer(players))
         {
             players.players[ThisPlayerNum(players)] = playerData;

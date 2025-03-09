@@ -24,14 +24,17 @@ namespace GlobalGame
         private List<IWeeklyUpdate> weeklyUpdateObjects;
         private List<IYearsUpdate> yearsUpdateObjects;
 
-        void Start()
+        void Awake()
         {
-            Time=new TimeData();
-            Time.year = 1829;
-            Time.month = 1;
-            Time.week = 1;
-            Time.dayProgress = 0;
-            Time.timeScale = 0f;
+            if (PlayerPrefs.GetInt("Load") == 0)
+            {
+                Time = new TimeData();
+                Time.year = 1829;
+                Time.month = 1;
+                Time.week = 1;
+                Time.dayProgress = 0;
+                Time.timeScale = 0f;
+            }
 
             PauseButton.onClick.AddListener(Pause);
             PlayButton.onClick.AddListener(Play);
@@ -39,6 +42,7 @@ namespace GlobalGame
 
             weeklyUpdateObjects = new List<IWeeklyUpdate>(FindObjectsOfType<MonoBehaviour>().OfType<IWeeklyUpdate>());
             yearsUpdateObjects = new List<IYearsUpdate>(FindObjectsOfType<MonoBehaviour>().OfType<IYearsUpdate>());
+           
         }
 
        public void Pause()

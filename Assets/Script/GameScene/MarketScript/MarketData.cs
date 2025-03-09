@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class MarketData
 {
-   public List<Supply> supplys=new List<Supply>();
-   public List<Demand> demands=new List<Demand> ();
+    public List<Supply> supplys=new List<Supply>();
+    public List<Demand> demands=new List<Demand> ();
+    public List<Supply> Lastsupplys = new List<Supply>();
+    public List<Demand> Lastsdemands = new List<Demand>();
 }
 public struct Supply
 {

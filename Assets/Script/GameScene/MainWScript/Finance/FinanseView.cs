@@ -8,11 +8,18 @@ public class FinanseView : MonoBehaviour
     public Text ConsumptionForResearchText;
     public Text ConsumptionForDevelopText;
 
-    private void Start()
+  
+    private void Awake()
     {
-        data=new FinanseViewData();
+        if (PlayerPrefs.GetInt("Load") == 0)
+        {
+            data = new FinanseViewData();
+        }
+        ÑonsumptionForProductionText.text = $"{data.lastconsumptionforproduction}$";
+        ConsumptionForResearchText.text = $"{data.lastconsumptionforresearch}$";
+        ConsumptionForDevelopText.text = $"{data.lastconsumptionfordevelop}$";
+        ProfitForLocomotiveSellText.text = $"{data.lastprofitforlocomotievesell}$";
 
-        View();
     }
 
     //private int lastWeekConsumptionProduction;
@@ -22,6 +29,12 @@ public class FinanseView : MonoBehaviour
 
     public void View()
     {
+        data.lastprofitforlocomotievesell= data.profitforlocomotievesell;
+        data.lastconsumptionforproduction= data.consumptionforproduction;
+        data.lastconsumptionforresearch = data.consumptionforresearch;
+        data.lastconsumptionfordevelop = data.consumptionfordevelop;
+    
+        
         ÑonsumptionForProductionText.text = $"{data.consumptionforproduction}$";
         ConsumptionForResearchText.text = $"{data.consumptionforresearch}$";
         ConsumptionForDevelopText.text = $"{data.consumptionfordevelop}$";

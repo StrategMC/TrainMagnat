@@ -16,27 +16,30 @@ public class ResearchController : MonoBehaviour, IYearsUpdate, IWeeklyUpdate
     TimeData timeData;
     public TimeController timeController;
 
-    void Start()
+    void Awake()
     {
-        researchBonus = new ReasearchBonus();
-        reasearchData =new ReasearchData();
-        
-        timeData = timeController.Time;
-        Technology texSteam = new Technology($"Паровая установка {timeData.year}", 30, 0, 5, 0, 0, 0, 0, 0);
-        Technology texShasi = new Technology($"Механизмы шасси {timeData.year}", 30, 0, 0, 5, 0, 0, 0, 0);
-        Technology texEko = new Technology($"Снижение массы шасси {timeData.year}", 32, 0, 0, 0, 5, 0, 0, 0);
-        Technology texEkoEng = new Technology($"Снижение массы двигателя {timeData.year}", 32, 0, 0, 0, 0, 5, 0, 0);
-        Technology texEngK = new Technology($"Новая конструкция двигателя {timeData.year}", 40, 0, 15, 0, 5, 0, 10, 0);
-        Technology texShaK = new Technology($"Новая конструкция шасси {timeData.year}", 40, 0, 0, 15, 0, 5, 0, 10);
+        if (PlayerPrefs.GetInt("Load") == 0)
+        {
+            researchBonus = new ReasearchBonus();
+            reasearchData = new ReasearchData();
 
-        reasearchData.technologys.Add(texSteam);
-        reasearchData.technologys.Add(texShasi);
-        reasearchData.technologys.Add(texEko);
-        reasearchData.technologys.Add(texEkoEng);
-        reasearchData.technologys.Add(texEngK);
-        reasearchData.technologys.Add(texShaK);
-        researchView.View();
-        researchView.ViewBonus();
+            timeData = timeController.Time;
+            Technology texSteam = new Technology($"Паровая установка {timeData.year}", 30, 0, 5, 0, 0, 0, 0, 0);
+            Technology texShasi = new Technology($"Механизмы шасси {timeData.year}", 30, 0, 0, 5, 0, 0, 0, 0);
+            Technology texEko = new Technology($"Снижение массы шасси {timeData.year}", 32, 0, 0, 0, 5, 0, 0, 0);
+            Technology texEkoEng = new Technology($"Снижение массы двигателя {timeData.year}", 32, 0, 0, 0, 0, 5, 0, 0);
+            Technology texEngK = new Technology($"Новая конструкция двигателя {timeData.year}", 40, 0, 15, 0, 5, 0, 10, 0);
+            Technology texShaK = new Technology($"Новая конструкция шасси {timeData.year}", 40, 0, 0, 15, 0, 5, 0, 10);
+
+            reasearchData.technologys.Add(texSteam);
+            reasearchData.technologys.Add(texShasi);
+            reasearchData.technologys.Add(texEko);
+            reasearchData.technologys.Add(texEkoEng);
+            reasearchData.technologys.Add(texEngK);
+            reasearchData.technologys.Add(texShaK);
+        }
+        //researchView.View();
+        //researchView.ViewBonus();
     }
     public void PointUpdate(string tex)
     {

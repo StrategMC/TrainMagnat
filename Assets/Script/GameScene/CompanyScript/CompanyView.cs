@@ -22,7 +22,6 @@ public class CompanyView : MonoBehaviour, IWeeklyUpdate
 
     void Start()
     {
-        // Добавим и настроим необходимые компоненты для автоматической настройки высоты
         AddLayoutComponents(lineContent);
         AddLayoutComponents(locomotiveContent);
 
@@ -57,6 +56,10 @@ public class CompanyView : MonoBehaviour, IWeeklyUpdate
 
     void OnCompanyButtonClicked(CompanyData company, GameObject companyButton)
     {
+        //foreach(var line in company.Lines)
+        //{
+        //    Debug.Log("L "+line);
+        //}
         if (selectedCompany == company)
         {
             selectedCompany = null;

@@ -10,9 +10,12 @@ public class DevelopWindowController : MonoBehaviour,IWeeklyUpdate
     public FinanseView finanseView; 
     public void Awake()
     {
-        data = new DevelopWindowData();
-        data.Rashod = 1000;
-        data.bonus = 1f;
+        if (PlayerPrefs.GetInt("Load") == 0)
+        {
+            data = new DevelopWindowData();
+            data.Rashod = 1000;
+            data.bonus = 1f;
+        }
     }
     public void WeekTick()
     {
