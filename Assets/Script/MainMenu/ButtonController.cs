@@ -8,14 +8,19 @@ public class ButtonController : MonoBehaviour
     public Button ButtonAutoriacion;
     public Button ButtonNewPlay;
     public Button ButtonContinuePlay;
+    public Button ButtonSetting;
     void Start()
     {
         Debug.Log(PlayerPrefs.GetInt("id player"));
         ButtonAutoriacion.onClick.AddListener(AutorizacionButtonCklick);
         ButtonNewPlay.onClick.AddListener(NewPlay);
         ButtonContinuePlay.onClick.AddListener(ContinuePlay);
+        ButtonSetting.onClick.AddListener(SettingOpen);
     }
+    void SettingOpen()
+    {
 
+    }
     void AutorizacionButtonCklick()
     {
         SceneManager.LoadScene("RA");
