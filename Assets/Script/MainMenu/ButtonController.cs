@@ -9,17 +9,24 @@ public class ButtonController : MonoBehaviour
     public Button ButtonNewPlay;
     public Button ButtonContinuePlay;
     public Button ButtonSetting;
+    public Button ButtonSettingExit;
+    public GameObject SettingPanel;
     void Start()
     {
-        Debug.Log(PlayerPrefs.GetInt("id player"));
+        //Debug.Log(PlayerPrefs.GetInt("id player"));
         ButtonAutoriacion.onClick.AddListener(AutorizacionButtonCklick);
         ButtonNewPlay.onClick.AddListener(NewPlay);
         ButtonContinuePlay.onClick.AddListener(ContinuePlay);
         ButtonSetting.onClick.AddListener(SettingOpen);
+        ButtonSettingExit.onClick.AddListener(SettingClose);
     }
     void SettingOpen()
     {
-
+        SettingPanel.gameObject.SetActive(true);
+    }
+    void SettingClose()
+    {
+        SettingPanel.gameObject.SetActive(false);
     }
     void AutorizacionButtonCklick()
     {

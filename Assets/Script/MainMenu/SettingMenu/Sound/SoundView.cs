@@ -7,20 +7,33 @@ public class SoundView : MonoBehaviour
 {
     public Text VolumeText;
     public SoundController SoundController;
-
+    public Dropdown musicDropdown;
+    public Sprite[] Cartinki;
+    public SpriteRenderer Ramka;
     public Slider Slider;
-    private void Start()
+    public void Start()
     {
         Slider.value = SoundController.SoundData.music_volume;
+        //Debug.Log("Music vlaue " + SoundController.SoundData.music_volume);
+        //Debug.Log("Sl vlaue "+Slider.value);
         Slider.onValueChanged.AddListener(ChangeVolumeMusic);
+        ViewVolumeMusicText(Slider.value);
+        musicDropdown.onValueChanged.AddListener(SoundController.OnMusicSelected);
+        musicDropdown.onValueChanged.AddListener(ChangeImage);
+    }
+    void ChangeImage(int i)
+    {
+        Ramka.sprite = Cartinki[i];
     }
     void ChangeVolumeMusic(float value)
     {
         SoundController.GetMusicVolume(value);
-        ViewVolumeMusicText((int)(value*100));
+        ViewVolumeMusicText(value);
     }
-    void ViewVolumeMusicText(int n)
+    void ViewVolumeMusicText(float n)
     {
-        VolumeText.text = $"{n}%";
+        int viewint=(int)((n+50)*2);
+        VolumeText.text = $"{viewint}%";
     }
+   
 }
