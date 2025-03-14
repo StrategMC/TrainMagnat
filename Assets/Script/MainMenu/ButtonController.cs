@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class ButtonController : MonoBehaviour
 {
+    public SoundController SoundController;
     public Button ButtonAutoriacion;
     public Button ButtonNewPlay;
     public Button ButtonContinuePlay;
@@ -46,6 +47,7 @@ public class ButtonController : MonoBehaviour
     }
     private void Play()
     {
+        SoundController.SaveMusic();
         SceneManager.LoadScene("SampleScene");
     }
 }

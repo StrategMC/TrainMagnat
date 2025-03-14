@@ -593,6 +593,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b70aa9635ca352942ae8968ed336ed98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SoundController: {fileID: 385379573}
   ButtonAutoriacion: {fileID: 572882026}
   ButtonNewPlay: {fileID: 1738316089}
   ButtonContinuePlay: {fileID: 1026824349}
@@ -726,7 +727,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 0.3
 --- !u!222 &270670665
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1213,7 +1214,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 0.3
 --- !u!222 &572882028
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2464,7 +2465,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 0.3
 --- !u!222 &1026824351
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3736,7 +3737,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 0.3
 --- !u!222 &1669920610
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4231,7 +4232,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 0.3
 --- !u!222 &1738316091
 CanvasRenderer:
   m_ObjectHideFlags: 0

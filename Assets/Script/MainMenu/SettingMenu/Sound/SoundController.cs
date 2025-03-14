@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,7 +40,12 @@ public class SoundController : MonoBehaviour
             audioSource.Stop();
             audioSource.clip = musicTracks[index];
             audioSource.Play();
-            PlayerPrefs.SetInt("MusicName",index);
+            PlayerPrefs.SetInt("MusicName", index);
         }
+    }
+    public void SaveMusic()
+    {
+        PlayerPrefs.SetFloat("TimeMusic", audioSource.time);
+        PlayerPrefs.Save();
     }
 }
